@@ -9577,7 +9577,7 @@ a.text-dark:hover, a.text-dark:focus {
   }
 }
 
-/* Estilos personalizados para menú de categorías responsivo */
+/* Estilos personalizados para tienda Hardware Tech */
 @media (max-width: 991.98px) {
   /* Estilos para el menú de categorías móvil */
   #mobile-categories .card-body {
@@ -9612,13 +9612,13 @@ a.text-dark:hover, a.text-dark:focus {
     box-shadow: none;
   }
   
-  #mobile-ropa-submenu a {
+  #mobile-cpu-submenu a {
     color: #6F6F6F;
     font-size: 0.9rem;
     transition: color 0.15s ease-in-out;
   }
   
-  #mobile-ropa-submenu a:hover {
+  #mobile-cpu-submenu a:hover {
     color: #D19C97;
     background-color: #f8f9fa;
     border-radius: 0.25rem;
@@ -9667,4 +9667,173 @@ a.text-dark:hover, a.text-dark:focus {
   #navbar-vertical .nav-item:hover .dropdown-menu {
     display: block;
   }
+}
+
+/* Estilos para formularios y validaciones */
+.form-control.is-invalid {
+  border-color: #dc3545;
+  box-shadow: 0 0 0 0.2rem rgba(220, 53, 69, 0.25);
+}
+
+.form-control.is-valid {
+  border-color: #28a745;
+  box-shadow: 0 0 0 0.2rem rgba(40, 167, 69, 0.25);
+}
+
+.invalid-feedback {
+  display: block;
+  width: 100%;
+  margin-top: 0.25rem;
+  font-size: 0.875em;
+  color: #dc3545;
+}
+
+/* Estilos para el carrito */
+.badge {
+  position: relative;
+  top: -8px;
+  left: -8px;
+  background-color: #D19C97 !important;
+}
+
+/* Estilos para iconos de productos de hardware */
+.product-item .card-header::before {
+  content: '';
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 30px;
+  height: 30px;
+  background: rgba(209, 156, 151, 0.9);
+  border-radius: 50%;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.product-item:hover .card-header::before {
+  opacity: 1;
+}
+
+/* Animaciones para elementos de hardware */
+.cat-item .cat-img img,
+.product-item .product-img img {
+  transition: transform 0.5s ease, filter 0.3s ease;
+}
+
+.cat-item:hover .cat-img img,
+.product-item:hover .product-img img {
+  transform: scale(1.1);
+  filter: brightness(1.1);
+}
+
+/* Estilos para botones de productos */
+.product-item .btn {
+  transition: all 0.3s ease;
+}
+
+.product-item .btn:hover {
+  color: #D19C97 !important;
+  transform: translateY(-2px);
+}
+
+/* Estilos para la información de contacto */
+.contact-info p {
+  margin-bottom: 1rem;
+  font-size: 1rem;
+}
+
+.contact-info i {
+  width: 20px;
+  text-align: center;
+}
+
+/* Estilos para redes sociales */
+.social-links .btn {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+}
+
+.social-links .btn:hover {
+  background-color: #D19C97;
+  border-color: #D19C97;
+  color: white;
+  transform: translateY(-3px);
+}
+
+/* Estilos para alertas personalizadas */
+.alert {
+  border-radius: 0.5rem;
+  border: none;
+  box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+}
+
+.alert-success {
+  background-color: #d4edda;
+  color: #155724;
+}
+
+.alert-danger {
+  background-color: #f8d7da;
+  color: #721c24;
+}
+
+/* Estilos para el header */
+header.bg-dark {
+  background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%) !important;
+}
+
+/* Mejoras en tipografía para hardware */
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 600;
+}
+
+/* Estilos para el carrusel de video */
+.carousel-item video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Responsive adjustments para formularios */
+@media (max-width: 768px) {
+  .form-group {
+    margin-bottom: 1.5rem;
+  }
+  
+  .form-control {
+    font-size: 16px; /* Evita zoom en iOS */
+  }
+}
+
+/* Estilos para botones de agregar al carrito */
+.add-to-cart {
+  background: none;
+  border: none;
+  color: #6F6F6F;
+  transition: color 0.3s ease;
+}
+
+.add-to-cart:hover {
+  color: #D19C97 !important;
+}
+
+/* Footer mejorado */
+footer {
+  background: linear-gradient(135deg, #EDF1FF 0%, #f8f9fa 100%) !important;
+}
+
+footer h1 i.fas.fa-microchip {
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+  100% { transform: scale(1); }
 }
