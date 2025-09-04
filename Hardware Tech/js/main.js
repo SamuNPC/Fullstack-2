@@ -292,6 +292,70 @@
     });
 
 
+    // ==========================
+    // Renderizado Dinámico de Categorías (Desktop + Mobile)
+    // ==========================
+    const CATEGORIES_HT = [
+        { name: 'Procesadores' },
+        { name: 'Placas Madre' },
+        { name: 'Memorias RAM' },
+        { name: 'Tarjetas Graficas' }
+    ];
+
+    function renderVerticalCategories() {
+        const verticalNav = document.getElementById('navbar-vertical');
+        if (!verticalNav) return;
+        if (verticalNav.dataset.rendered === 'true') return;
+
+    const container = document.createElement('div');
+    container.className = 'navbar-nav w-100';
+
+        CATEGORIES_HT.forEach(cat => {
+            const a = document.createElement('a');
+            a.href = '#';
+            a.className = 'nav-item nav-link';
+            a.textContent = cat.name;
+            container.appendChild(a);
+        });
+
+        verticalNav.innerHTML = '';
+        verticalNav.appendChild(container);
+        verticalNav.dataset.rendered = 'true';
+        if (!verticalNav.classList.contains('navbar')) {
+            verticalNav.className = 'collapse show navbar navbar-vertical navbar-light align-items-start p-0 border border-top-0 border-bottom-0';
+        }
+    }
+
+    function renderMobileCategories() {
+        const mobileWrapper = document.getElementById('mobile-categories');
+        if (!mobileWrapper) return;
+        if (mobileWrapper.dataset.rendered === 'true') return;
+
+        const listContainer = document.createElement('div');
+        listContainer.className = 'card card-body bg-light mt-2';
+        const list = document.createElement('div');
+        list.className = 'list-group list-group-flush';
+
+        CATEGORIES_HT.forEach(cat => {
+            const a = document.createElement('a');
+            a.href = '#';
+            a.className = 'list-group-item list-group-item-action bg-transparent';
+            a.textContent = cat.name;
+            list.appendChild(a);
+        });
+        listContainer.appendChild(list);
+
+        mobileWrapper.innerHTML = '';
+        mobileWrapper.appendChild(listContainer);
+        mobileWrapper.dataset.rendered = 'true';
+    }
+
+    document.addEventListener('DOMContentLoaded', function() {
+        renderVerticalCategories();
+        renderMobileCategories();
+    });
+
+
     // Código de carruseles y control de cantidad eliminado por no utilizarse tras retirar detail.html y secciones relacionadas.
     
 })(jQuery);

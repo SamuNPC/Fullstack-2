@@ -9806,3 +9806,19 @@ footer h1 i.fas.fa-microchip {
   50% { transform: scale(1.05); }
   100% { transform: scale(1); }
 }
+
+/* === Compact Category Sidebar (4 categories) === */
+#navbar-vertical .navbar-nav .nav-link {
+  padding: 6px 14px;
+  font-size: 14px;
+  line-height: 1.2;
+}
+#navbar-vertical {
+  border-right: 1px solid #eee;
+  max-height: 260px;
+  overflow-y: auto;
+}
+@media (max-width: 991.98px) {
+  #navbar-vertical { max-height: none; border-right: none; }
+}
+#mobile-categories .list-group-item { padding: 6px 12px; font-size:14px; }
