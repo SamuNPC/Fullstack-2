@@ -10752,4 +10752,66 @@ a.text-dark:hover, a.text-dark:focus {
             transform: translateY(-15px);
   }
 }
-/*# sourceMappingURL=style.css.map */
+/* Estilos adicionales para funcionalidad de admin */
+.admin-user .navbar-nav .nav-link#adminPanel {
+    background-color: rgba(255, 193, 7, 0.1);
+    border-radius: 4px;
+    margin-left: 5px;
+}
+
+.admin-user .navbar-nav .nav-link#adminPanel:hover {
+    background-color: rgba(255, 193, 7, 0.2);
+}
+
+.text-warning {
+    color: #ffc107 !important;
+}
+
+.admin-badge {
+    background-color: #ffc107;
+    color: #212529;
+    font-size: 0.7rem;
+    padding: 2px 6px;
+    border-radius: 10px;
+    margin-left: 5px;
+}
+
+/* Animación para indicadores de admin */
+@keyframes adminGlow {
+    0% { box-shadow: 0 0 5px rgba(255, 193, 7, 0.3); }
+    50% { box-shadow: 0 0 15px rgba(255, 193, 7, 0.6); }
+    100% { box-shadow: 0 0 5px rgba(255, 193, 7, 0.3); }
+}
+
+.admin-highlight {
+    animation: adminGlow 2s infinite;
+}
+
+/* Estilos para modal de administración */
+.modal-header.bg-primary {
+    background-color: #3f80c2 !important;
+}
+
+.card .fa-plus-circle.text-success,
+.card .fa-edit.text-warning,
+.card .fa-users.text-info {
+    transition: transform 0.3s ease;
+}
+
+.card:hover .fa-plus-circle.text-success,
+.card:hover .fa-edit.text-warning,
+.card:hover .fa-users.text-info {
+    transform: scale(1.1);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .navbar-nav .nav-link#userWelcome {
+        font-size: 0.9rem;
+    }
+    
+    .admin-user .navbar-nav .nav-link#adminPanel {
+        margin-left: 0;
+        margin-top: 5px;
+    }
+}

@@ -134,8 +134,15 @@
                             <a href="contact.html" class="nav-item nav-link">Contacto</a>
                         </div>
                         <div class="navbar-nav ml-auto py-0">
-                            <a href="login.html" class="nav-item nav-link">Iniciar Sesión</a>
-                            <a href="register.html" class="nav-item nav-link">Registrarse</a>
+                            <a href="login.html" class="nav-item nav-link" id="loginLink">Iniciar Sesión</a>
+                            <a href="register.html" class="nav-item nav-link" id="registerLink">Registrarse</a>
+                            <a href="#" class="nav-item nav-link d-none" id="userWelcome"></a>
+                            <a href="#" class="nav-item nav-link d-none" id="adminPanel" onclick="showAdminModal()">
+                                <i class="fas fa-user-shield mr-1"></i>Admin
+                            </a>
+                            <a href="#" class="nav-item nav-link d-none" id="logoutLink" onclick="logoutUser()">
+                                <i class="fas fa-sign-out-alt mr-1"></i>Cerrar Sesión
+                            </a>
                         </div>
                     </div>
                 </nav>
@@ -433,5 +440,84 @@
 
     <!-- Plantilla Javascript -->
     <script src="js/main.js"></script>
+    <script src="js/admin.js"></script>
+
+    <!-- JavaScript para gestión de usuarios y navegación -->
+    <script>
+        // Función para obtener usuario actual
+        function getCurrentUser() {
+            const localUser = localStorage.getItem('currentUser');
+            const sessionUser = sessionStorage.getItem('currentUser');
+            
+            if (localUser) {
+                return JSON.parse(localUser);
+            } else if (sessionUser) {
+                return JSON.parse(sessionUser);
+            }
+            
+            return null;
+        }
+
+        // Función para actualizar navegación según estado del usuario
+        function updateNavigation() {
+            const currentUser = getCurrentUser();
+            const loginLink = document.getElementById('loginLink');
+            const registerLink = document.getElementById('registerLink');
+            const userWelcome = document.getElementById('userWelcome');
+            const adminPanel = document.getElementById('adminPanel');
+            const logoutLink = document.getElementById('logoutLink');
+
+            if (currentUser) {
+                // Usuario logueado - ocultar login/register, mostrar opciones de usuario
+                loginLink.classList.add('d-none');
+                registerLink.classList.add('d-none');
+                
+                userWelcome.classList.remove('d-none');
+                userWelcome.textContent = `Hola, ${currentUser.firstName}`;
+                userWelcome.title = `${currentUser.firstName} ${currentUser.lastName} (${currentUser.email})`;
+                
+                logoutLink.classList.remove('d-none');
+
+                // Mostrar panel de admin solo si es administrador
+                if (currentUser.isAdmin) {
+                    adminPanel.classList.remove('d-none');
+                    userWelcome.innerHTML = `<i class="fas fa-crown mr-1 text-warning"></i>Hola, ${currentUser.firstName}`;
+                } else {
+                    adminPanel.classList.add('d-none');
+                }
+            } else {
+                // Usuario no logueado - mostrar login/register, ocultar opciones de usuario
+                loginLink.classList.remove('d-none');
+                registerLink.classList.remove('d-none');
+                
+                userWelcome.classList.add('d-none');
+                adminPanel.classList.add('d-none');
+                logoutLink.classList.add('d-none');
+            }
+        }
+
+        // Actualizar navegación al cargar la página
+        document.addEventListener('DOMContentLoaded', function() {
+            updateNavigation();
+            
+            // Agregar clase de admin al body si es administrador
+            const currentUser = getCurrentUser();
+            if (currentUser && currentUser.isAdmin) {
+                document.body.classList.add('admin-user');
+                console.log('Modo administrador activado para:', currentUser.email);
+            }
+        });
+
+        // Función para cerrar sesión (definida aquí también por compatibilidad)
+        function logoutUser() {
+            if (confirm('¿Estás seguro que deseas cerrar sesión?')) {
+                localStorage.removeItem('currentUser');
+                sessionStorage.removeItem('currentUser');
+                alert('Has cerrado sesión exitosamente.');
+                updateNavigation();
+                // No redirigir, permitir que el usuario navegue sin estar logueado
+            }
+        }
+    </script>
 </body>
 </html>

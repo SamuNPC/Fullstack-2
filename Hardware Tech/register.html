@@ -242,6 +242,11 @@
 
     <!-- JavaScript para funcionalidad del registro -->
     <script>
+        // Inicializar localStorage de usuarios si no existe
+        if (!localStorage.getItem('hardwareTechUsers')) {
+            localStorage.setItem('hardwareTechUsers', JSON.stringify([]));
+        }
+
         // Mostrar/ocultar contraseña
         document.getElementById('togglePassword').addEventListener('click', function() {
             const passwordField = document.getElementById('password');
@@ -258,15 +263,51 @@
             }
         });
 
+        // Función para verificar si el email ya existe
+        function emailExists(email) {
+            const users = JSON.parse(localStorage.getItem('hardwareTechUsers'));
+            return users.some(user => user.email === email);
+        }
+
+        // Función para registrar usuario
+        function registerUser(userData) {
+            const users = JSON.parse(localStorage.getItem('hardwareTechUsers'));
+            
+            // Determinar si es admin basado en el dominio del email
+            const isAdmin = userData.email.endsWith('@admin.cl');
+            
+            const newUser = {
+                id: Date.now(), // ID único basado en timestamp
+                firstName: userData.firstName,
+                lastName: userData.lastName,
+                email: userData.email,
+                password: userData.password, // En producción esto debería estar hasheado
+                phone: userData.phone || '',
+                birthDate: userData.birthDate || '',
+                newsletter: userData.newsletter,
+                isAdmin: isAdmin,
+                registeredAt: new Date().toISOString(),
+                lastLogin: null
+            };
+            
+            users.push(newUser);
+            localStorage.setItem('hardwareTechUsers', JSON.stringify(users));
+            
+            return newUser;
+        }
+
         // Validación del formulario
         document.getElementById('registerForm').addEventListener('submit', function(e) {
             e.preventDefault();
             
-            const firstName = document.getElementById('firstName').value;
-            const lastName = document.getElementById('lastName').value;
-            const email = document.getElementById('email').value;
+            const firstName = document.getElementById('firstName').value.trim();
+            const lastName = document.getElementById('lastName').value.trim();
+            const email = document.getElementById('email').value.trim().toLowerCase();
+            const phone = document.getElementById('phone').value.trim();
             const password = document.getElementById('password').value;
             const confirmPassword = document.getElementById('confirmPassword').value;
+            const birthDate = document.getElementById('birthDate').value;
+            const newsletter = document.getElementById('newsletter').checked;
             const terms = document.getElementById('terms').checked;
             
             // Validación básica
@@ -279,6 +320,12 @@
             const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
             if (!emailRegex.test(email)) {
                 alert('Por favor ingresa un correo electrónico válido.');
+                return;
+            }
+            
+            // Verificar si el email ya existe
+            if (emailExists(email)) {
+                alert('Ya existe una cuenta con este correo electrónico. Por favor usa otro o inicia sesión.');
                 return;
             }
             
@@ -300,12 +347,43 @@
                 return;
             }
             
-            // Aquí normalmente enviarías los datos al servidor
-            // Por ahora solo mostramos un mensaje de éxito
-            alert('¡Cuenta creada exitosamente! Bienvenido a Hardware Tech.');
-            
-            // Redirigir al usuario a la página de login
-            window.location.href = 'login.html';
+            // Registrar usuario
+            try {
+                const userData = {
+                    firstName,
+                    lastName,
+                    email,
+                    phone,
+                    password,
+                    birthDate,
+                    newsletter
+                };
+                
+                const newUser = registerUser(userData);
+                
+                // Mensaje diferente para admins
+                if (newUser.isAdmin) {
+                    alert('¡Cuenta de administrador creada exitosamente! Tendrás acceso a funciones administrativas. Bienvenido a Hardware Tech.');
+                } else {
+                    alert('¡Cuenta creada exitosamente! Bienvenido a Hardware Tech.');
+                }
+                
+                // Mostrar información en consola para desarrollo
+                console.log('Usuario registrado:', {
+                    email: newUser.email,
+                    isAdmin: newUser.isAdmin,
+                    name: `${newUser.firstName} ${newUser.lastName}`
+                });
+                
+                // Redirigir al usuario a la página de login
+                setTimeout(() => {
+                    window.location.href = 'login.html';
+                }, 1500);
+                
+            } catch (error) {
+                console.error('Error al registrar usuario:', error);
+                alert('Ocurrió un error al crear la cuenta. Por favor intenta nuevamente.');
+            }
         });
 
         // Validación en tiempo real
