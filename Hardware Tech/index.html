@@ -35,7 +35,7 @@
                 </form>
             </div>
             <div class="col-lg-3 col-3 text-right">
-                <a href="cart.html" class="btn border">
+                <a href="carrito.html" class="btn border">
                     <i class="fas fa-shopping-cart text-primary"></i>
                     <span class="badge">0</span>
                 </a>
@@ -78,17 +78,17 @@
                     <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
                         <div class="navbar-nav mr-auto py-0">
                             <a href="index.html" class="nav-item nav-link active">Inicio</a>
-                            <a href="shop.html" class="nav-item nav-link">Tienda</a>
+                            <a href="tienda.html" class="nav-item nav-link">Tienda</a>
                             <div class="nav-item dropdown">
                                 <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Páginas</a>
                                 <div class="dropdown-menu rounded-0 m-0">
-                                    <a href="cart.html" class="dropdown-item">Carrito de Compras</a>
+                                    <a href="carrito.html" class="dropdown-item">Carrito de Compras</a>
                                 </div>
                             </div>
                         </div>
                         <div class="navbar-nav ml-auto py-0">
-                            <a href="login.html" class="nav-item nav-link" id="loginLink">Iniciar Sesión</a>
-                            <a href="register.html" class="nav-item nav-link" id="registerLink">Registrarse</a>
+                            <a href="iniciar-sesion.html" class="nav-item nav-link" id="loginLink">Iniciar Sesión</a>
+                            <a href="registro.html" class="nav-item nav-link" id="registerLink">Registrarse</a>
                             <a href="#" class="nav-item nav-link d-none" id="userWelcome"></a>
                             <a href="#" class="nav-item nav-link d-none" id="adminPanel" onclick="showAdminModal()">
                                 <i class="fas fa-user-shield mr-1"></i>Admin
@@ -198,7 +198,7 @@
                     </div>
                     <div class="card-footer d-flex justify-content-between bg-light border">
                         <span class="btn btn-sm text-dark p-0 disabled"><i class="fas fa-eye text-muted mr-1"></i>Sin Detalle</span>
-                        <a href="#" class="btn btn-sm text-dark p-0" onclick="addToCart({
+                        <a href="#" class="btn btn-sm text-dark p-0" onclick="agregarAlCarrito({
                             name: 'Procesador AMD Ryzen 7 3700X',
                             price: 169990,
                             image: 'img/ryzen.jpg'
@@ -219,7 +219,7 @@
                     </div>
                     <div class="card-footer d-flex justify-content-between bg-light border">
                         <span class="btn btn-sm text-dark p-0 disabled"><i class="fas fa-eye text-muted mr-1"></i>Sin Detalle</span>
-                        <a href="#" class="btn btn-sm text-dark p-0" onclick="addToCart({
+                        <a href="#" class="btn btn-sm text-dark p-0" onclick="agregarAlCarrito({
                             name: 'Placa Madre Z590 AORUS PRO AX',
                             price: 149000,
                             image: 'img/product-6.jpg'
@@ -240,7 +240,7 @@
                     </div>
                     <div class="card-footer d-flex justify-content-between bg-light border">
                         <span class="btn btn-sm text-dark p-0 disabled"><i class="fas fa-eye text-muted mr-1"></i>Sin Detalle</span>
-                        <a href="#" class="btn btn-sm text-dark p-0" onclick="addToCart({
+                        <a href="#" class="btn btn-sm text-dark p-0" onclick="agregarAlCarrito({
                             name: 'Kit RAM DDR4 16GB 3200MHz RGB',
                             price: 34990,
                             image: 'img/product-5.jpg'
@@ -261,7 +261,7 @@
                     </div>
                     <div class="card-footer d-flex justify-content-between bg-light border">
                         <span class="btn btn-sm text-dark p-0 disabled"><i class="fas fa-eye text-muted mr-1"></i>Sin Detalle</span>
-                        <a href="#" class="btn btn-sm text-dark p-0" onclick="addToCart({
+                        <a href="#" class="btn btn-sm text-dark p-0" onclick="agregarAlCarrito({
                             name: 'RTX 2080 Super 8GB',
                             price: 298990,
                             image: 'img/product-1.jpg'
@@ -291,8 +291,8 @@
                         <h5 class="font-weight-bold text-dark mb-4">Enlaces Rápidos</h5>
                         <div class="d-flex flex-column justify-content-start">
                             <a class="text-dark mb-2" href="index.html"><i class="fa fa-angle-right mr-2"></i>Inicio</a>
-                            <a class="text-dark mb-2" href="shop.html"><i class="fa fa-angle-right mr-2"></i>Nuestra Tienda</a>
-                            <a class="text-dark mb-2" href="cart.html"><i class="fa fa-angle-right mr-2"></i>Carrito de Compras</a>
+                            <a class="text-dark mb-2" href="tienda.html"><i class="fa fa-angle-right mr-2"></i>Nuestra Tienda</a>
+                            <a class="text-dark mb-2" href="carrito.html"><i class="fa fa-angle-right mr-2"></i>Carrito de Compras</a>
 
                         </div>
                     </div>
@@ -316,6 +316,6 @@
     <script src="js/main.js"></script>
     <script src="js/admin.js"></script>
     <script src="js/aunt.js"></script>
-    <script src="js/cart.js"></script>
+    <script src="js/carrito.js"></script>
 </body>
 </html>
