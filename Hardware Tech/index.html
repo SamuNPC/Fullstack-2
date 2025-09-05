@@ -14,7 +14,7 @@
     <link href="scss/style.css" rel="stylesheet">
 </head>
 
-<body>
+<body> 
     <!-- Barra Superior Inicio -->
         <div class="row align-items-center py-3 px-xl-5">
             <div class="col-lg-4 d-none d-lg-block">
@@ -35,7 +35,7 @@
                 </form>
             </div>
             <div class="col-lg-3 col-3 text-right">
-                <a href="" class="btn border">
+                <a href="cart.html" class="btn border">
                     <i class="fas fa-shopping-cart text-primary"></i>
                     <span class="badge">0</span>
                 </a>
@@ -191,14 +191,18 @@
                         <img class="img-fluid w-100" src="img/ryzen.jpg" alt="Procesador AMD Ryzen 7 3700X">
                     </div>
                     <div class="card-body border-left border-right text-center p-0 pt-4 pb-3">
-                        <h6 class="text-truncate mb-3">Procesador AMD Ryzen 7 3700X</h6>
+                        <h6 class="product-title">Procesador AMD Ryzen 7 3700X</h6>
                         <div class="d-flex justify-content-center">
                             <h6>$169.990</h6><h6 class="text-muted ml-2"><del>$249.990</del></h6>
                         </div>
                     </div>
                     <div class="card-footer d-flex justify-content-between bg-light border">
                         <span class="btn btn-sm text-dark p-0 disabled"><i class="fas fa-eye text-muted mr-1"></i>Sin Detalle</span>
-                        <a href="#" class="btn btn-sm text-dark p-0"><i class="fas fa-shopping-cart text-primary mr-1"></i>Agregar</a>
+                        <a href="#" class="btn btn-sm text-dark p-0" onclick="addToCart({
+                            name: 'Procesador AMD Ryzen 7 3700X',
+                            price: 169990,
+                            image: 'img/ryzen.jpg'
+                        })"><i class="fas fa-shopping-cart text-primary mr-1"></i>Agregar</a>
                     </div>
                 </div>
             </div>
@@ -208,14 +212,18 @@
                         <img class="img-fluid w-100" src="img/product-6.jpg" alt="Placa Madre Z590 AORUS PRO AX">
                     </div>
                     <div class="card-body border-left border-right text-center p-0 pt-4 pb-3">
-                        <h6 class="text-truncate mb-3">Placa Madre Z590 AORUS PRO AX</h6>
+                        <h6 class="product-title">Placa Madre Z590 AORUS PRO AX</h6>
                         <div class="d-flex justify-content-center">
                             <h6>$149.000</h6><h6 class="text-muted ml-2"><del>$268.990</del></h6>
                         </div>
                     </div>
                     <div class="card-footer d-flex justify-content-between bg-light border">
                         <span class="btn btn-sm text-dark p-0 disabled"><i class="fas fa-eye text-muted mr-1"></i>Sin Detalle</span>
-                        <a href="#" class="btn btn-sm text-dark p-0"><i class="fas fa-shopping-cart text-primary mr-1"></i>Agregar</a>
+                        <a href="#" class="btn btn-sm text-dark p-0" onclick="addToCart({
+                            name: 'Placa Madre Z590 AORUS PRO AX',
+                            price: 149000,
+                            image: 'img/product-6.jpg'
+                        })"><i class="fas fa-shopping-cart text-primary mr-1"></i>Agregar</a>
                     </div>
                 </div>
             </div>
@@ -225,14 +233,18 @@
                         <img class="img-fluid w-100" src="img/product-5.jpg" alt="Kit RAM DDR4 16GB 3200MHz RGB">
                     </div>
                     <div class="card-body border-left border-right text-center p-0 pt-4 pb-3">
-                        <h6 class="text-truncate mb-3">Kit RAM DDR4 16GB 3200MHz RGB</h6>
+                        <h6 class="product-title">Kit RAM DDR4 16GB 3200MHz RGB</h6>
                         <div class="d-flex justify-content-center">
                             <h6>$34.990</h6><h6 class="text-muted ml-2"><del>$59.990</del></h6>
                         </div>
                     </div>
                     <div class="card-footer d-flex justify-content-between bg-light border">
                         <span class="btn btn-sm text-dark p-0 disabled"><i class="fas fa-eye text-muted mr-1"></i>Sin Detalle</span>
-                        <a href="#" class="btn btn-sm text-dark p-0"><i class="fas fa-shopping-cart text-primary mr-1"></i>Agregar</a>
+                        <a href="#" class="btn btn-sm text-dark p-0" onclick="addToCart({
+                            name: 'Kit RAM DDR4 16GB 3200MHz RGB',
+                            price: 34990,
+                            image: 'img/product-5.jpg'
+                        })"><i class="fas fa-shopping-cart text-primary mr-1"></i>Agregar</a>
                     </div>
                 </div>
             </div>
@@ -242,14 +254,18 @@
                         <img class="img-fluid w-100" src="img/product-1.jpg" alt="RTX 2080 Super 8GB">
                     </div>
                     <div class="card-body border-left border-right text-center p-0 pt-4 pb-3">
-                        <h6 class="text-truncate mb-3">RTX 2080 Super 8GB</h6>
+                        <h6 class="product-title">RTX 2080 Super 8GB</h6>
                         <div class="d-flex justify-content-center">
                             <h6>$298.990</h6><h6 class="text-muted ml-2"><del>$500.000</del></h6>
                         </div>
                     </div>
                     <div class="card-footer d-flex justify-content-between bg-light border">
                         <span class="btn btn-sm text-dark p-0 disabled"><i class="fas fa-eye text-muted mr-1"></i>Sin Detalle</span>
-                        <a href="#" class="btn btn-sm text-dark p-0"><i class="fas fa-shopping-cart text-primary mr-1"></i>Agregar</a>
+                        <a href="#" class="btn btn-sm text-dark p-0" onclick="addToCart({
+                            name: 'RTX 2080 Super 8GB',
+                            price: 298990,
+                            image: 'img/product-1.jpg'
+                        })"><i class="fas fa-shopping-cart text-primary mr-1"></i>Agregar</a>
                     </div>
                 </div>
             </div>
@@ -299,83 +315,7 @@
     <!-- Plantilla Javascript -->
     <script src="js/main.js"></script>
     <script src="js/admin.js"></script>
-
-    <!-- JavaScript para gestión de usuarios y navegación -->
-    <script>
-        // Función para obtener usuario actual
-        function getCurrentUser() {
-            const localUser = localStorage.getItem('currentUser');
-            const sessionUser = sessionStorage.getItem('currentUser');
-            
-            if (localUser) {
-                return JSON.parse(localUser);
-            } else if (sessionUser) {
-                return JSON.parse(sessionUser);
-            }
-            
-            return null;
-        }
-
-        // Función para actualizar navegación según estado del usuario
-        function updateNavigation() {
-            const currentUser = getCurrentUser();
-            const loginLink = document.getElementById('loginLink');
-            const registerLink = document.getElementById('registerLink');
-            const userWelcome = document.getElementById('userWelcome');
-            const adminPanel = document.getElementById('adminPanel');
-            const logoutLink = document.getElementById('logoutLink');
-
-            if (currentUser) {
-                // Usuario logueado - ocultar login/register, mostrar opciones de usuario
-                loginLink.classList.add('d-none');
-                registerLink.classList.add('d-none');
-                
-                userWelcome.classList.remove('d-none');
-                userWelcome.textContent = `Hola, ${currentUser.firstName}`;
-                userWelcome.title = `${currentUser.firstName} ${currentUser.lastName} (${currentUser.email})`;
-                
-                logoutLink.classList.remove('d-none');
-
-                // Mostrar panel de admin solo si es administrador
-                if (currentUser.isAdmin) {
-                    adminPanel.classList.remove('d-none');
-                    userWelcome.innerHTML = `<i class="fas fa-crown mr-1 text-warning"></i>Hola, ${currentUser.firstName}`;
-                } else {
-                    adminPanel.classList.add('d-none');
-                }
-            } else {
-                // Usuario no logueado - mostrar login/register, ocultar opciones de usuario
-                loginLink.classList.remove('d-none');
-                registerLink.classList.remove('d-none');
-                
-                userWelcome.classList.add('d-none');
-                adminPanel.classList.add('d-none');
-                logoutLink.classList.add('d-none');
-            }
-        }
-
-        // Actualizar navegación al cargar la página
-        document.addEventListener('DOMContentLoaded', function() {
-            updateNavigation();
-            
-            // Agregar clase de admin al body si es administrador
-            const currentUser = getCurrentUser();
-            if (currentUser && currentUser.isAdmin) {
-                document.body.classList.add('admin-user');
-                console.log('Modo administrador activado para:', currentUser.email);
-            }
-        });
-
-        // Función para cerrar sesión (definida aquí también por compatibilidad)
-        function logoutUser() {
-            if (confirm('¿Estás seguro que deseas cerrar sesión?')) {
-                localStorage.removeItem('currentUser');
-                sessionStorage.removeItem('currentUser');
-                alert('Has cerrado sesión exitosamente.');
-                updateNavigation();
-                // No redirigir, permitir que el usuario navegue sin estar logueado
-            }
-        }
-    </script>
+    <script src="js/aunt.js"></script>
+    <script src="js/cart.js"></script>
 </body>
 </html>

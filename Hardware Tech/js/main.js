@@ -1,10 +1,6 @@
 (function ($) {
     "use strict";
     
-    // Variables globales para el carrito
-    let cart = [];
-    let cartCount = 0;
-    
     // Dropdown al pasar el ratón
     $(document).ready(function () {
         function toggleNavbarMethod() {
@@ -71,61 +67,6 @@
                 $('#navbar-vertical .nav-item.dropdown').off('mouseenter mouseleave');
             }
         });
-    });
-    
-    // Funcionalidad del carrito de compras
-    $(document).ready(function () {
-        // Agregar productos al carrito
-        $('.add-to-cart').on('click', function (e) {
-            e.preventDefault();
-            const productName = $(this).data('product');
-            const productPrice = parseFloat($(this).data('price'));
-            
-            if (productName && productPrice) {
-                addToCart(productName, productPrice);
-                showCartMessage('Producto agregado al carrito', 'success');
-            }
-        });
-        
-        function addToCart(name, price) {
-            const existingProduct = cart.find(item => item.name === name);
-            
-            if (existingProduct) {
-                existingProduct.quantity++;
-            } else {
-                cart.push({
-                    name: name,
-                    price: price,
-                    quantity: 1
-                });
-            }
-            
-            cartCount++;
-            updateCartDisplay();
-        }
-        
-        function updateCartDisplay() {
-            $('#cart-count').text(cartCount);
-        }
-        
-        function showCartMessage(message, type) {
-            const alertClass = type === 'success' ? 'alert-success' : 'alert-danger';
-            const messageHtml = `<div class="alert ${alertClass} alert-dismissible fade show" role="alert">
-                ${message}
-                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>`;
-            
-            // Buscar un contenedor para mostrar el mensaje
-            const container = $('.container-fluid').first();
-            container.prepend(messageHtml);
-            
-            // Auto-ocultar después de 3 segundos
-            setTimeout(function() {
-                $('.alert').alert('close');
-            }, 3000);
-        }
     });
     
     // Validaciones de formularios con JavaScript personalizado
