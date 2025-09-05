@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 
 <head>
     <meta charset="utf-8">
@@ -45,7 +45,7 @@
                 </form>
             </div>
             <div class="col-lg-3 col-3 text-right">
-                <a href="cart.html" class="btn border">
+                <a href="carrito.html" class="btn border">
                     <i class="fas fa-shopping-cart text-primary"></i>
                     <span class="badge">0</span>
                 </a>
@@ -88,7 +88,7 @@
                             <div class="nav-item dropdown">
                                 <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Páginas</a>
                                 <div class="dropdown-menu rounded-0 m-0">
-                                    <a href="cart.html" class="dropdown-item">Carrito de Compras</a>
+                                    <a href="carrito.html" class="dropdown-item">Carrito de Compras</a>
                                 </div>
                             </div>
                         </div>
@@ -160,17 +160,23 @@
                     <div class="col-lg-4 col-md-6 col-sm-12 pb-1">
                         <div class="card product-item border-0 mb-4" data-category="Procesadores">
                             <div class="card-header product-img position-relative overflow-hidden bg-transparent border p-0">
-                                <img class="img-fluid w-100" src="img/product-6.jpg" alt="Procesador Intel i7 9700K">
+                                <img class="img-fluid w-100" src="img/ryzen.jpg" alt="">
                             </div>
                             <div class="card-body border-left border-right text-center p-0 pt-4 pb-3">
-                                <h6 class="text-truncate mb-3">Procesador Intel i7 9700K</h6>
+                                <h6 class="text-truncate mb-3">Procesador AMD Ryzen 7 3700X</h6>
                                 <div class="d-flex justify-content-center">
-                                    <h6>$189.990</h6><h6 class="text-muted ml-2"><del>$229.990</del></h6>
+                                   <h6>$169.990</h6><h6 class="text-muted ml-2"><del>$249.990</del></h6>
                                 </div>
                             </div>
                             <div class="card-footer d-flex justify-content-between bg-light border">
-                                <span class="btn btn-sm text-dark p-0 disabled"><i class="fas fa-eye text-muted mr-1"></i>Sin Detalle</span>
-                                <a href="#" class="btn btn-sm text-dark p-0"><i class="fas fa-shopping-cart text-primary mr-1"></i>Agregar</a>
+                                <a href="detalle.html">
+                                <span class="btn btn-sm text-dark p-0 disabled"><i class="fas fa-eye text-muted mr-1"></i>Ver Detalle</span>
+                                </a>
+                                 <a href="#" class="btn btn-sm text-dark p-0" onclick="agregarAlCarrito({
+                                name: 'Procesador AMD Ryzen 7 3700X',
+                                price: 169990,
+                                image: 'img/ryzen.jpg'
+                                })"><i class="fas fa-shopping-cart text-primary mr-1"></i>Agregar</a>
                             </div>
                         </div>
                     </div>
@@ -186,8 +192,14 @@
                                 </div>
                             </div>
                             <div class="card-footer d-flex justify-content-between bg-light border">
-                                <span class="btn btn-sm text-dark p-0 disabled"><i class="fas fa-eye text-muted mr-1"></i>Sin Detalle</span>
-                                <a href="#" class="btn btn-sm text-dark p-0"><i class="fas fa-shopping-cart text-primary mr-1"></i>Agregar</a>
+                                <a href="detalle.html">
+                                <span class="btn btn-sm text-dark p-0 disabled"><i class="fas fa-eye text-muted mr-1"></i>Ver Detalle</span>
+                                </a>
+                                <a href="#" class="btn btn-sm text-dark p-0" onclick="agregarAlCarrito({
+                            name: 'Placa Madre Z590 AORUS PRO AX',
+                            price: 149000,
+                            image: 'img/product-6.jpg'
+                            })"><i class="fas fa-shopping-cart text-primary mr-1"></i>Agregar</a>
                             </div>
                         </div>
                     </div>
@@ -202,9 +214,15 @@
                                     <h6>$34.990</h6><h6 class="text-muted ml-2"><del>$59.990</del></h6>
                                 </div>
                             </div>
-                            <div class="card-footer d-flex justify-content-between bg-light border">
-                                <span class="btn btn-sm text-dark p-0 disabled"><i class="fas fa-eye text-muted mr-1"></i>Sin Detalle</span>
-                                <a href="#" class="btn btn-sm text-dark p-0"><i class="fas fa-shopping-cart text-primary mr-1"></i>Agregar</a>
+                            <div class="card-footer d-flex justify-content-between bg-light border"> 
+                                <a href="detalle.html">
+                                <span class="btn btn-sm text-dark p-0 disabled"><i class="fas fa-eye text-muted mr-1"></i>Ver Detalle</span>
+                                </a>
+                                <a href="#" class="btn btn-sm text-dark p-0" onclick="agregarAlCarrito({
+                                name: 'Kit RAM DDR4 16GB 3200MHz RGB',
+                                price: 34990,
+                                image: 'img/product-5.jpg'
+                                })"><i class="fas fa-shopping-cart text-primary mr-1"></i>Agregar</a>
                             </div>
                         </div>
                     </div>
@@ -220,42 +238,14 @@
                                 </div>
                             </div>
                             <div class="card-footer d-flex justify-content-between bg-light border">
-                                <span class="btn btn-sm text-dark p-0 disabled"><i class="fas fa-eye text-muted mr-1"></i>Sin Detalle</span>
-                                <a href="#" class="btn btn-sm text-dark p-0"><i class="fas fa-shopping-cart text-primary mr-1"></i>Agregar</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-6 col-sm-12 pb-1">
-                        <div class="card product-item border-0 mb-4" data-category="Almacenamiento">
-                            <div class="card-header product-img position-relative overflow-hidden bg-transparent border p-0">
-                                <img class="img-fluid w-100" src="img/product-3.jpg" alt="SSD NVMe 1TB Gen3">
-                            </div>
-                            <div class="card-body border-left border-right text-center p-0 pt-4 pb-3">
-                                <h6 class="text-truncate mb-3">SSD NVMe 1TB Gen3</h6>
-                                <div class="d-flex justify-content-center">
-                                    <h6>$79.990</h6><h6 class="text-muted ml-2"><del>$109.990</del></h6>
-                                </div>
-                            </div>
-                            <div class="card-footer d-flex justify-content-between bg-light border">
-                                <span class="btn btn-sm text-dark p-0 disabled"><i class="fas fa-eye text-muted mr-1"></i>Sin Detalle</span>
-                                <a href="#" class="btn btn-sm text-dark p-0"><i class="fas fa-shopping-cart text-primary mr-1"></i>Agregar</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-6 col-sm-12 pb-1">
-                        <div class="card product-item border-0 mb-4" data-category="Gabinetes">
-                            <div class="card-header product-img position-relative overflow-hidden bg-transparent border p-0">
-                                <img class="img-fluid w-100" src="img/product-2.jpg" alt="Gabinete ATX Cooler Master">
-                            </div>
-                            <div class="card-body border-left border-right text-center p-0 pt-4 pb-3">
-                                <h6 class="text-truncate mb-3">Gabinete ATX Cooler Master</h6>
-                                <div class="d-flex justify-content-center">
-                                    <h6>$28.990</h6><h6 class="text-muted ml-2"><del>$53.990</del></h6>
-                                </div>
-                            </div>
-                            <div class="card-footer d-flex justify-content-between bg-light border">
-                                <span class="btn btn-sm text-dark p-0 disabled"><i class="fas fa-eye text-muted mr-1"></i>Sin Detalle</span>
-                                <a href="#" class="btn btn-sm text-dark p-0"><i class="fas fa-shopping-cart text-primary mr-1"></i>Agregar</a>
+                                <a href="detalle.html">
+                                <span class="btn btn-sm text-dark p-0 disabled"><i class="fas fa-eye text-muted mr-1"></i>Ver Detalle</span>
+                                </a>
+                                <a href="#" class="btn btn-sm text-dark p-0" onclick="agregarAlCarrito({
+                                name: 'RTX 2080 Super 8GB',
+                                price: 298990,
+                                image: 'img/product-1.jpg'
+                                })"><i class="fas fa-shopping-cart text-primary mr-1"></i>Agregar</a>
                             </div>
                         </div>
                     </div>
@@ -285,8 +275,8 @@
                     <h5 class="font-weight-bold text-dark mb-4">Enlaces Rápidos</h5>
                     <div class="d-flex flex-column justify-content-start">
                         <a class="text-dark mb-2" href="index.html"><i class="fa fa-angle-right mr-2"></i>Inicio</a>
-                        <a class="text-dark mb-2" href="shop.html"><i class="fa fa-angle-right mr-2"></i>Nuestra Tienda</a>
-                        <a class="text-dark mb-2" href="cart.html"><i class="fa fa-angle-right mr-2"></i>Carrito de Compras</a>
+                        <a class="text-dark mb-2" href="tienda.html"><i class="fa fa-angle-right mr-2"></i>Nuestra Tienda</a>
+                        <a class="text-dark mb-2" href="carrito.html"><i class="fa fa-angle-right mr-2"></i>Carrito de Compras</a>
                     </div>
                 </div>
             </div>
@@ -304,7 +294,6 @@
     <!-- JavaScript Libraries -->
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
-    <!-- Eliminados scripts de easing y owl.carousel no usados -->
 
     <!-- Contact Javascript File -->
     <script src="mail/jqBootstrapValidation.min.js"></script>
@@ -314,6 +303,7 @@
     <script src="js/main.js"></script>
     <script src="js/admin.js"></script>
     <script src="js/aunt.js"></script>
+    <script src="js/carrito.js"></script>
 </body>
 
 </html>
