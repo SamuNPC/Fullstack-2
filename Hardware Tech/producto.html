@@ -141,20 +141,9 @@
                 <!-- Nombre del producto -->
                 <h3 class="font-weight-semi-bold" id="product-name">Cargando producto...</h3>
                 
-                <!-- Calificación del producto con estrellas -->
-                <div class="d-flex mb-3">
-                    <div class="text-primary mr-2" id="product-rating">
-                        <small class="fas fa-star"></small>
-                        <small class="fas fa-star"></small>
-                        <small class="fas fa-star"></small>
-                        <small class="fas fa-star-half-alt"></small>
-                        <small class="far fa-star"></small>
-                    </div>
-                </div>
-                
                 <!-- Precios del producto -->
-                <div class="d-flex mb-4">
-                    <h3 class="font-weight-semi-bold mb-4" id="product-price">$0</h3>
+                <div class="d-flex mb-4" id="product-price">
+                    <h3 class="font-weight-semi-bold mb-4">$0</h3>
                 </div>
                 
                 <!-- Descripción corta del producto -->
@@ -193,7 +182,7 @@
                         </div>
                     </div>
                     <!-- Botón principal de agregar al carrito -->
-                    <button class="btn btn-primary px-3" id="add-to-cart-btn" onclick="addToCartFromDetail()">
+                    <button class="btn btn-primary px-3" id="add-to-cart-btn">
                         <i class="fa fa-shopping-cart mr-1"></i> Agregar al Carrito
                     </button>
                 </div>
@@ -239,25 +228,10 @@
                             <a class="text-dark" href="tienda.html#tarjetas-graficas"><i class="fa fa-angle-right mr-2"></i>Tarjetas Gráficas</a>
                         </div>
                     </div>
-                    <div class="col-md-4 mb-5">
-                        <h5 class="font-weight-bold text-dark mb-4">Newsletter</h5>
-                        <p>Suscríbete para recibir ofertas y novedades</p>
-                        <form action="" id="newsletter-footer-form">
-                            <div class="form-group">
-                                <input type="text" class="form-control border-0 py-4" placeholder="Tu Nombre" required />
-                            </div>
-                            <div class="form-group">
-                                <input type="email" class="form-control border-0 py-4" placeholder="Tu Email" required />
-                            </div>
-                            <div>
-                                <button class="btn btn-primary btn-block border-0 py-3" type="submit">Suscribirse</button>
-                            </div>
-                        </form>
-                    </div>
                 </div>
             </div>
         </div>
-        <!-- Copyright y métodos de pago -->
+        <!-- Copyright -->
         <div class="row border-top border-light mx-xl-5 py-4">
             <div class="col-md-6 px-xl-0">
                 <p class="mb-md-0 text-center text-md-left text-dark">
@@ -292,7 +266,6 @@
     <script src="js/aunt.js"></script>         <!-- Autenticación de usuarios -->
     <script src="js/carrito.js"></script>      <!-- Gestión del carrito -->
     <script src="js/productos.js"></script>    <!-- Gestión de productos (nuevo) -->
-    <script src="js/productos-admin.js"></script> <!-- Administración de productos CRUD -->
 
 </body>
 </html>
