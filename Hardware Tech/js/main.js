@@ -1,16 +1,41 @@
+/**
+ * ============================================
+ * MAIN.JS - MÓDULO PRINCIPAL DEL SISTEMA
+ * ============================================
+ * Funcionalidades principales del sitio web:
+ * - Gestión de navegación responsive
+ * - Manejo de dropdowns y menús
+ * - Carga dinámica de categorías
+ * - Validaciones de formularios
+ * - Efectos visuales y UX
+ * - Inicialización de componentes
+ * ============================================
+ */
+
 (function ($) {
     "use strict";
     
-    // Dropdown al pasar el ratón
+    /**
+     * ============================================
+     * GESTIÓN DE NAVEGACIÓN RESPONSIVE
+     * ============================================
+     */
+    
+    /**
+     * Configuración de dropdowns responsivos
+     * Maneja el comportamiento hover/click según el tamaño de pantalla
+     */
     $(document).ready(function () {
         function toggleNavbarMethod() {
             if ($(window).width() > 992) {
+                // Desktop: Activar dropdown con hover
                 $('.navbar .dropdown').on('mouseover', function () {
                     $('.dropdown-toggle', this).trigger('click');
                 }).on('mouseout', function () {
                     $('.dropdown-toggle', this).trigger('click').blur();
                 });
             } else {
+                // Mobile: Desactivar eventos hover
                 $('.navbar .dropdown').off('mouseover').off('mouseout');
             }
         }
@@ -18,7 +43,16 @@
         $(window).resize(toggleNavbarMethod);
     });
     
-    // Funcionalidad del menú de categorías responsivo
+    /**
+     * ============================================
+     * SISTEMA DE CATEGORÍAS RESPONSIVE
+     * ============================================
+     */
+    
+    /**
+     * Funcionalidad del menú de categorías responsivo
+     * Gestiona la apertura/cierre de menús y submenús
+     */
     $(document).ready(function () {
         // Cerrar automáticamente otros submenús cuando se abre uno nuevo en móvil
         $('#mobile-cpu-submenu').on('show.bs.collapse', function () {
@@ -69,10 +103,22 @@
         });
     });
     
-    // Validaciones de formularios con JavaScript personalizado
+    /**
+     * ============================================
+     * SISTEMA DE VALIDACIONES DE FORMULARIOS
+     * ============================================
+     */
+    
+    /**
+     * Validaciones de formularios con JavaScript personalizado
+     * Proporciona validación en tiempo real y feedback visual
+     */
     $(document).ready(function () {
         
-        // Validación del formulario de contacto
+        /**
+         * Validación del formulario de contacto
+         * Valida campos obligatorios y formato de datos
+         */
         $('#contactForm').on('submit', function (e) {
             e.preventDefault();
             
@@ -240,7 +286,9 @@
         { name: 'Procesadores' },
         { name: 'Placas Madre' },
         { name: 'Memorias RAM' },
-        { name: 'Tarjetas Graficas' }
+        { name: 'Tarjetas Gráficas' },
+        { name: 'Almacenamiento' },
+        { name: 'Gabinetes' }
     ];
 
     function renderVerticalCategories() {
@@ -267,6 +315,10 @@
         }
     }
 
+    /**
+     * Renderizado del menú de categorías para móvil
+     * Crea una versión optimizada para dispositivos móviles
+     */
     function renderMobileCategories() {
         const mobileWrapper = document.getElementById('mobile-categories');
         if (!mobileWrapper) return;
@@ -277,11 +329,13 @@
         const list = document.createElement('div');
         list.className = 'list-group list-group-flush';
 
+        // Generar enlaces de categorías para móvil
         CATEGORIES_HT.forEach(cat => {
             const a = document.createElement('a');
             a.href = '#';
             a.className = 'list-group-item list-group-item-action bg-transparent';
             a.textContent = cat.name;
+            a.setAttribute('title', `Ver productos de ${cat.name}`);
             list.appendChild(a);
         });
         listContainer.appendChild(list);
@@ -291,13 +345,30 @@
         mobileWrapper.dataset.rendered = 'true';
     }
 
+    /**
+     * ============================================
+     * INICIALIZACIÓN DEL SISTEMA
+     * ============================================
+     */
+    
+    /**
+     * Inicialización principal cuando se carga el DOM
+     * Ejecuta todas las funciones de renderizado necesarias
+     */
     document.addEventListener('DOMContentLoaded', function() {
         renderVerticalCategories();
         renderMobileCategories();
     });
 
-
-    // Código de carruseles y control de cantidad eliminado por no utilizarse tras retirar detail.html y secciones relacionadas.
+    /**
+     * ============================================
+     * LIMPIEZA DE CÓDIGO OPTIMIZADA
+     * ============================================
+     * Código de carruseles y control de cantidad eliminado 
+     * por no utilizarse tras retirar detail.html y 
+     * secciones relacionadas.
+     * ============================================
+     */
     
 })(jQuery);
 

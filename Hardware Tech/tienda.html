@@ -1,30 +1,47 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
+<!-- ============================================
+     PÁGINA DE TIENDA - HARDWARE TECH
+     ============================================
+     Página principal de productos con:
+     - Catálogo completo de productos
+     - Sistema de filtros por categoría
+     - Búsqueda en tiempo real
+     - Integración con carrito de compras
+     ============================================ -->
 
 <head>
+    <!-- ============================================
+         METADATOS Y CONFIGURACIÓN SEO
+         ============================================ -->
     <meta charset="utf-8">
-        <title>Hardware Tech - Tienda</title>
+    <title>Tienda de Hardware - Hardware Tech | Componentes y Tecnología</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta name="description" content="Explora nuestra tienda de componentes de hardware. Procesadores, placas madre, tarjetas gráficas, memorias RAM y más.">
+    <meta name="keywords" content="tienda hardware, componentes PC, procesadores, placas madre, tarjetas gráficas, memorias RAM">
+    <meta name="author" content="Hardware Tech">
 
     <!-- Favicon -->
     <link href="img/favicon.ico" rel="icon">
 
+    <!-- ============================================
+         FUENTES Y ESTILOS EXTERNOS
+         ============================================ -->
     <!-- Google Web Fonts -->
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet"> 
 
-    <!-- Font Awesome -->
+    <!-- Font Awesome Icons -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
-
-    <!-- Libraries Stylesheet -->
-    <!-- Eliminado owl.carousel no usado -->
 
     <!-- Customized Bootstrap Stylesheet -->
     <link href="scss/style.css" rel="stylesheet">
 </head>
 
 <body>
-    <!-- Barra Superior Inicio -->
+    <!-- ============================================
+         BARRA SUPERIOR - LOGO Y NAVEGACIÓN
+         ============================================ -->
     <div class="container-fluid">
         <div class="row align-items-center py-3 px-xl-5">
             <div class="col-lg-4 d-none d-lg-block">
@@ -45,7 +62,7 @@
                 </form>
             </div>
             <div class="col-lg-3 col-3 text-right">
-                <a href="cart.html" class="btn border">
+                <a href="carrito.html" class="btn border">
                     <i class="fas fa-shopping-cart text-primary"></i>
                     <span class="badge">0</span>
                 </a>
@@ -84,21 +101,25 @@
                     <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
                         <div class="navbar-nav mr-auto py-0">
                             <a href="index.html" class="nav-item nav-link">Inicio</a>
-                            <a href=".html" class="nav-item nav-link active">Tienda</a>
+                            <a href="tienda.html" class="nav-item nav-link active">Tienda</a>
                             <div class="nav-item dropdown">
                                 <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Páginas</a>
                                 <div class="dropdown-menu rounded-0 m-0">
-                                    <a href="cart.html" class="dropdown-item">Carrito de Compras</a>
+                                    <a href="carrito.html" class="dropdown-item">Carrito de Compras</a>
                                 </div>
                             </div>
                         </div>
                         <div class="navbar-nav ml-auto py-0">
-                            <a href="login.html" class="nav-item nav-link" id="loginLink">Iniciar Sesión</a>
-                            <a href="register.html" class="nav-item nav-link" id="registerLink">Registrarse</a>
+                            <a href="iniciar-sesion.html" class="nav-item nav-link" id="loginLink">Iniciar Sesión</a>
+                            <a href="registro.html" class="nav-item nav-link" id="registerLink">Registrarse</a>
                             <a href="#" class="nav-item nav-link d-none" id="userWelcome"></a>
                             <a href="#" class="nav-item nav-link d-none" id="adminPanel" onclick="showAdminModal()">
                                 <i class="fas fa-user-shield mr-1"></i>Admin
                             </a>
+                            <a href="#" class="nav-item nav-link d-none" id="logoutLink" onclick="logoutUser()">
+                                <i class="fas fa-sign-out-alt mr-1"></i>Cerrar Sesión
+                            </a>
+                        </div>
                             <a href="#" class="nav-item nav-link d-none" id="logoutLink" onclick="logoutUser()">
                                 <i class="fas fa-sign-out-alt mr-1"></i>Cerrar Sesión
                             </a>
@@ -122,20 +143,34 @@
             </div>
         </div>
     </div>
-    <!-- Page Header End -->
 
-
-    <!-- Shop Start -->
+    <!-- ============================================
+         SECCIÓN PRINCIPAL DE TIENDA
+         ============================================
+         Página de catálogo con:
+         - Barra de búsqueda en tiempo real
+         - Filtros de ordenamiento
+         - Grid dinámico de productos
+         - Carga dinámica desde localStorage
+         ============================================ -->
     <div class="container-fluid pt-5">
         <div class="row px-xl-5 justify-content-center">
-            <!-- Shop Product Start -->
+            
+            <!-- ÁREA PRINCIPAL DE PRODUCTOS -->
             <div class="col-lg-12 col-md-12">
                 <div class="row pb-3">
+                    
+                    <!-- BARRA DE HERRAMIENTAS: BÚSQUEDA Y FILTROS -->
                     <div class="col-12 pb-1">
                         <div class="d-flex flex-column flex-md-row align-items-center justify-content-between mb-4">
+                            
+                            <!-- BUSCADOR DE PRODUCTOS -->
                             <form action="" class="col-12 col-md-8 mb-3 mb-md-0 pr-md-3">
                                 <div class="input-group">
-                                    <input type="text" class="form-control" placeholder="Buscar por nombre">
+                                    <input type="text" class="form-control" 
+                                           placeholder="Buscar por nombre de producto"
+                                           id="searchInput"
+                                           title="Buscar productos en tiempo real">
                                     <div class="input-group-append">
                                         <span class="input-group-text bg-transparent text-primary">
                                             <i class="fa fa-search"></i>
@@ -143,34 +178,53 @@
                                     </div>
                                 </div>
                             </form>
+                            
+                            <!-- DROPDOWN DE ORDENAMIENTO -->
                             <div class="dropdown">
-                                <button class="btn border dropdown-toggle" type="button" id="triggerId" data-toggle="dropdown" aria-haspopup="true"
-                                        aria-expanded="false">
-                                            Ordenar por
-                                        </button>
+                                <button class="btn border dropdown-toggle" type="button" 
+                                        id="triggerId" data-toggle="dropdown" 
+                                        aria-haspopup="true" aria-expanded="false"
+                                        title="Ordenar productos">
+                                    Ordenar por
+                                </button>
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="triggerId">
-                                    <a class="dropdown-item" href="#">Más recientes</a>
-                                    <a class="dropdown-item" href="#">Más populares</a>
-                                    <a class="dropdown-item" href="#">Mejor valorados</a>
+                                    <a class="dropdown-item" href="#" onclick="ordenarProductos('recientes')">Más recientes</a>
+                                    <a class="dropdown-item" href="#" onclick="ordenarProductos('populares')">Más populares</a>
+                                    <a class="dropdown-item" href="#" onclick="ordenarProductos('valorados')">Mejor valorados</a>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <!-- Un producto por categoría -->
+                    
+                    <!-- ============================================
+                         PRODUCTOS ESTÁTICOS DE DEMOSTRACIÓN
+                         ============================================
+                         Productos hardcodeados para mostrar el diseño:
+                         - Diferentes categorías de hardware
+                         - Precios con descuentos
+                         - Integración con sistema de carrito
+                         - En producción serían cargados dinámicamente
+                         ============================================ -->
+                    
+                    <!-- PRODUCTO DEMO: PROCESADOR INTEL -->
                     <div class="col-lg-4 col-md-6 col-sm-12 pb-1">
                         <div class="card product-item border-0 mb-4" data-category="Procesadores">
+                            <!-- Imagen del producto -->
                             <div class="card-header product-img position-relative overflow-hidden bg-transparent border p-0">
                                 <img class="img-fluid w-100" src="img/product-6.jpg" alt="Procesador Intel i7 9700K">
                             </div>
+                            <!-- Información del producto -->
                             <div class="card-body border-left border-right text-center p-0 pt-4 pb-3">
                                 <h6 class="text-truncate mb-3">Procesador Intel i7 9700K</h6>
                                 <div class="d-flex justify-content-center">
-                                    <h6>$189.990</h6><h6 class="text-muted ml-2"><del>$229.990</del></h6>
+                                    <h6>$189.990</h6>
+                                    <h6 class="text-muted ml-2"><del>$229.990</del></h6>
                                 </div>
                             </div>
+                            <!-- Acciones del producto -->
                             <div class="card-footer d-flex justify-content-between bg-light border">
-                                <span class="btn btn-sm text-dark p-0 disabled"><i class="fas fa-eye text-muted mr-1"></i>Sin Detalle</span>
-                                <a href="#" class="btn btn-sm text-dark p-0"><i class="fas fa-shopping-cart text-primary mr-1"></i>Agregar</a>
+                                <a href="producto.html?id=1" class="btn btn-sm text-dark p-0"><i class="fas fa-eye text-primary mr-1"></i>Ver Producto</a>
+                                <a href="#" class="btn btn-sm text-dark p-0" onclick="agregarProductoRapido(1)"><i class="fas fa-shopping-cart text-primary mr-1"></i>Agregar</a>
                             </div>
                         </div>
                     </div>
@@ -186,8 +240,8 @@
                                 </div>
                             </div>
                             <div class="card-footer d-flex justify-content-between bg-light border">
-                                <span class="btn btn-sm text-dark p-0 disabled"><i class="fas fa-eye text-muted mr-1"></i>Sin Detalle</span>
-                                <a href="#" class="btn btn-sm text-dark p-0"><i class="fas fa-shopping-cart text-primary mr-1"></i>Agregar</a>
+                                <a href="producto.html?id=2" class="btn btn-sm text-dark p-0"><i class="fas fa-eye text-primary mr-1"></i>Ver Producto</a>
+                                <a href="#" class="btn btn-sm text-dark p-0" onclick="agregarProductoRapido(2)"><i class="fas fa-shopping-cart text-primary mr-1"></i>Agregar</a>
                             </div>
                         </div>
                     </div>
@@ -203,8 +257,8 @@
                                 </div>
                             </div>
                             <div class="card-footer d-flex justify-content-between bg-light border">
-                                <span class="btn btn-sm text-dark p-0 disabled"><i class="fas fa-eye text-muted mr-1"></i>Sin Detalle</span>
-                                <a href="#" class="btn btn-sm text-dark p-0"><i class="fas fa-shopping-cart text-primary mr-1"></i>Agregar</a>
+                                <a href="producto.html?id=3" class="btn btn-sm text-dark p-0"><i class="fas fa-eye text-primary mr-1"></i>Ver Producto</a>
+                                <a href="#" class="btn btn-sm text-dark p-0" onclick="agregarProductoRapido(3)"><i class="fas fa-shopping-cart text-primary mr-1"></i>Agregar</a>
                             </div>
                         </div>
                     </div>
@@ -220,8 +274,8 @@
                                 </div>
                             </div>
                             <div class="card-footer d-flex justify-content-between bg-light border">
-                                <span class="btn btn-sm text-dark p-0 disabled"><i class="fas fa-eye text-muted mr-1"></i>Sin Detalle</span>
-                                <a href="#" class="btn btn-sm text-dark p-0"><i class="fas fa-shopping-cart text-primary mr-1"></i>Agregar</a>
+                                <a href="producto.html?id=4" class="btn btn-sm text-dark p-0"><i class="fas fa-eye text-primary mr-1"></i>Ver Producto</a>
+                                <a href="#" class="btn btn-sm text-dark p-0" onclick="agregarProductoRapido(4)"><i class="fas fa-shopping-cart text-primary mr-1"></i>Agregar</a>
                             </div>
                         </div>
                     </div>
@@ -237,8 +291,8 @@
                                 </div>
                             </div>
                             <div class="card-footer d-flex justify-content-between bg-light border">
-                                <span class="btn btn-sm text-dark p-0 disabled"><i class="fas fa-eye text-muted mr-1"></i>Sin Detalle</span>
-                                <a href="#" class="btn btn-sm text-dark p-0"><i class="fas fa-shopping-cart text-primary mr-1"></i>Agregar</a>
+                                <a href="producto.html?id=5" class="btn btn-sm text-dark p-0"><i class="fas fa-eye text-primary mr-1"></i>Ver Producto</a>
+                                <a href="#" class="btn btn-sm text-dark p-0" onclick="agregarProductoRapido(5)"><i class="fas fa-shopping-cart text-primary mr-1"></i>Agregar</a>
                             </div>
                         </div>
                     </div>
@@ -254,8 +308,8 @@
                                 </div>
                             </div>
                             <div class="card-footer d-flex justify-content-between bg-light border">
-                                <span class="btn btn-sm text-dark p-0 disabled"><i class="fas fa-eye text-muted mr-1"></i>Sin Detalle</span>
-                                <a href="#" class="btn btn-sm text-dark p-0"><i class="fas fa-shopping-cart text-primary mr-1"></i>Agregar</a>
+                                <a href="producto.html?id=6" class="btn btn-sm text-dark p-0"><i class="fas fa-eye text-primary mr-1"></i>Ver Producto</a>
+                                <a href="#" class="btn btn-sm text-dark p-0" onclick="agregarProductoRapido(6)"><i class="fas fa-shopping-cart text-primary mr-1"></i>Agregar</a>
                             </div>
                         </div>
                     </div>
@@ -314,6 +368,8 @@
     <script src="js/main.js"></script>
     <script src="js/admin.js"></script>
     <script src="js/aunt.js"></script>
+    <script src="js/productos.js"></script>
+    <script src="js/productos-admin.js"></script>
 </body>
 
 </html>
