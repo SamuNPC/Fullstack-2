@@ -31,7 +31,7 @@ function buscarProductoPorId(id) {
             id: 1,
             name: 'Procesador Intel i7 9700K',
             price: 189990,
-            image: 'img/product-6.jpg',
+            image: 'img/cat-4.jpg',
             category: 'Procesadores',
             description: 'Procesador Intel Core i7-9700K de 8va generación con 8 núcleos y 8 hilos. Frecuencia base de 3.6 GHz y turbo hasta 4.9 GHz. Socket LGA1151, ideal para gaming y aplicaciones profesionales.'
         },
@@ -58,6 +58,22 @@ function buscarProductoPorId(id) {
             image: 'img/tarjeta-grafica.jpg',
             category: 'Tarjetas Gráficas',
             description: 'Tarjeta gráfica NVIDIA GeForce RTX 2080 Super con 8GB de memoria GDDR6. Perfecta para gaming en 1440p y ray tracing en tiempo real.'
+        },
+        5: {
+            id: 5,
+            name: 'SSD Nvme Kingston Nv3 1TB',
+            price: 79990,
+            image: 'img/SSD kingston-nv3.jpg',
+            category: 'Almacenamiento',
+            description: 'Disco duro de estado sólido (SSD) Kingston NVMe3 NVMe de 1 TB de almacenamiento. Ideal para un equipo muy rápido y con alta velocidad en la transferencia de archivos.'
+        },
+        6: {
+            id: 6,
+            name: 'Gabinete ATX Cooler Master',
+            price: 28990,
+            image: 'img/product-2.jpg',
+            category: 'Gabinetes',
+            description: 'Gabinete ATX Cooler Master x1 Ventilador 120mm generico (Sin fuente de poder). Flujo de aire optimo para una refrigeraciòn en condiciones'
         }
     };
     
