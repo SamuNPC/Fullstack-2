@@ -1,29 +1,61 @@
 <!DOCTYPE html>
+<!-- 
+====================================================================
+HARDWARE TECH - E-COMMERCE DE COMPONENTES REACONDICIONADOS
+====================================================================
+Archivo: index.html
+Propósito: Página principal con carrusel promocional y catálogo destacado
+Dependencias: Bootstrap 4.5.3, jQuery 3.4.1, Font Awesome 5.10.0
+Responsivo: Mobile-first design con breakpoints estándar
+Última actualización: Septiembre 2025
+====================================================================
+-->
 <html lang="es">
 
 <head>
+    <!-- META TAGS ESENCIALES -->
     <meta charset="utf-8">
-    <title>Hardware Tech</title>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    
+    <!-- SEO Y BRANDING -->
+    <title>Hardware Tech - Componentes Reacondicionados</title>
+    <meta name="description" content="Tienda de componentes de PC reacondicionados y nuevos a precios razonables. Procesadores, placas madre, RAM, tarjetas gráficas y más.">
+    <meta name="keywords" content="hardware, componentes PC, reacondicionados, procesadores, RAM, tarjetas gráficas">
+    
+    <!-- RECURSOS EXTERNOS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet"> 
-
+    
+    <!-- ESTILOS PRINCIPALES -->
     <link href="scss/style.css" rel="stylesheet">
 </head>
 
 <body> 
-    <!-- Barra Superior Inicio -->
+    <!-- ============================================
+         BARRA SUPERIOR - HEADER PRINCIPAL
+         ============================================
+         Contiene: Logo, buscador y carrito
+         Responsive: Oculta logo en móvil, mantiene buscador y carrito
+         ============================================ -->
+    <div class="container-fluid bg-white">
         <div class="row align-items-center py-3 px-xl-5">
+            <!-- LOGO EMPRESA (Solo visible en desktop) -->
             <div class="col-lg-4 d-none d-lg-block">
-                <a href="" class="text-decoration-none">
-                    <h1 class="m-0 display-5 font-weight-semi-bold">Hardware Tech</h1>
+                <a href="index.html" class="text-decoration-none">
+                    <h1 class="m-0 display-5 font-weight-semi-bold">
+                        <span class="text-primary font-weight-bold border px-3 mr-1">HW</span>
+                        Hardware Tech
+                    </h1>
                 </a>
             </div>
+            
+            <!-- BUSCADOR DE PRODUCTOS -->
             <div class="col-lg-5 col-9 text-left">
-                <form action="">
+                <form action="" method="GET" id="searchForm">
                     <div class="input-group">
-                        <input type="text" class="form-control" placeholder="Buscar productos">
+                        <input type="text" class="form-control" placeholder="Buscar productos..." 
+                               id="searchInput" name="search" autocomplete="off">
                         <div class="input-group-append">
                             <span class="input-group-text bg-transparent text-primary">
                                 <i class="fa fa-search"></i>
@@ -32,100 +64,174 @@
                     </div>
                 </form>
             </div>
+            
+            <!-- CARRITO DE COMPRAS -->
             <div class="col-lg-3 col-3 text-right">
-                <a href="carrito.html" class="btn border">
+                <a href="carrito.html" class="btn border" title="Ver carrito de compras">
                     <i class="fas fa-shopping-cart text-primary"></i>
-                    <span class="badge">0</span>
+                    <span class="badge badge-primary" id="cart-count">0</span>
                 </a>
             </div>
         </div>
     </div>
-    <!-- Barra Superior Fin -->
 
-
-    <!-- Barra de Navegación Inicio -->
+    <!-- ============================================
+         SISTEMA DE NAVEGACIÓN PRINCIPAL
+         ============================================
+         Arquitectura responsive:
+         - Desktop: Menú categorías lateral + navegación horizontal
+         - Mobile: Menú categorías colapsable + navegación en hamburguesa
+         ============================================ -->
     <div class="container-fluid mb-5">
         <div class="row border-top px-xl-5">
-            <!-- Menú de Categorías Desktop -->
+            
+            <!-- ========================================
+                 MENÚ DE CATEGORÍAS DESKTOP
+                 ======================================== -->
             <div class="col-lg-2 d-none d-lg-block">
-                <a class="btn shadow-none d-flex align-items-center justify-content-between bg-primary text-white w-100" data-toggle="collapse" href="#navbar-vertical" style="height: 65px; margin-top: -1px; padding: 0 30px;">
-                    <h6 class="m-0">Categorías</h6>
+                <!-- Botón activador del menú de categorías -->
+                <a class="btn shadow-none d-flex align-items-center justify-content-between bg-primary text-white w-100" 
+                   data-toggle="collapse" href="#navbar-vertical" 
+                   style="height: 65px; margin-top: -1px; padding: 0 30px;"
+                   aria-expanded="true" aria-controls="navbar-vertical">
+                    <small class="m-0">Categorías</small>
                     <i class="fa fa-angle-down text-dark"></i>
                 </a>
+                
                 <!-- Contenedor dinámico de categorías (rellenado por main.js) -->
-                <nav class="collapse show" id="navbar-vertical"></nav>
+                <nav class="collapse show navbar navbar-vertical navbar-light align-items-start p-0 border border-top-0 border-bottom-0" 
+                     id="navbar-vertical">
+                    <!-- Las categorías se cargan dinámicamente aquí -->
+                </nav>
             </div>
+            
+            <!-- ========================================
+                 ÁREA PRINCIPAL DE NAVEGACIÓN
+                 ======================================== -->
             <div class="col-lg-10">
-                <!-- Botón de Categorías Mobile -->
+                
+                <!-- BOTÓN DE CATEGORÍAS MOBILE -->
                 <div class="d-lg-none mb-3">
-                    <button class="btn btn-primary btn-block btn-categories-mobile" type="button" data-toggle="collapse" data-target="#mobile-categories" aria-expanded="false" aria-controls="mobile-categories">
-                        <i class="fa fa-bars mr-2"></i>Categorías
+                    <button class="btn btn-primary btn-block btn-categories-mobile" 
+                            type="button" 
+                            data-toggle="collapse" 
+                            data-target="#mobile-categories" 
+                            aria-expanded="false" 
+                            aria-controls="mobile-categories">
+                        <i class="fa fa-bars mr-2"></i><small>Categorías</small>
                     </button>
                     <!-- Contenedor dinámico móvil (rellenado por main.js) -->
-                    <div class="collapse" id="mobile-categories"></div>
+                    <div class="collapse" id="mobile-categories">
+                        <!-- Las categorías móviles se cargan dinámicamente aquí -->
+                    </div>
                 </div>
-                <!-- Fin Botón de Categorías Mobile -->
                 
+                <!-- NAVEGACIÓN HORIZONTAL PRINCIPAL -->
                 <nav class="navbar navbar-expand-lg bg-light navbar-light py-3 py-lg-0 px-0">
-                    <a href="" class="text-decoration-none d-block d-lg-none">
-                        <h1 class="m-0 display-5 font-weight-semi-bold">Hardware Tech</h1>
+                    <!-- Logo móvil (solo visible en móvil) -->
+                    <a href="index.html" class="text-decoration-none d-block d-lg-none">
+                        <h1 class="m-0 display-5 font-weight-semi-bold">
+                            <span class="text-primary font-weight-bold border px-2 mr-1">HW</span>
+                            Hardware Tech
+                        </h1>
                     </a>
-                    <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
+                    
+                    <!-- Botón hamburguesa para móvil -->
+                    <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse"
+                            aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>
                     </button>
+                    
+                    <!-- MENÚ PRINCIPAL COLAPSABLE -->
                     <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
+                        <!-- Enlaces principales -->
                         <div class="navbar-nav mr-auto py-0">
                             <a href="index.html" class="nav-item nav-link active">Inicio</a>
                             <a href="tienda.html" class="nav-item nav-link">Tienda</a>
                             <div class="nav-item dropdown">
-                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Páginas</a>
+                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" 
+                                   aria-haspopup="true" aria-expanded="false">Páginas</a>
                                 <div class="dropdown-menu rounded-0 m-0">
                                     <a href="carrito.html" class="dropdown-item">Carrito de Compras</a>
                                 </div>
                             </div>
                         </div>
-                        <div class="navbar-nav ml-auto py-0">
+                        
+                        <!-- ÁREA DE USUARIO (Dinámica según estado de login) -->
+                        <div class="navbar-nav ml-auto py-0" id="user-navigation">
+                            <!-- Estados de no logueado -->
                             <a href="iniciar-sesion.html" class="nav-item nav-link" id="loginLink">Iniciar Sesión</a>
                             <a href="registro.html" class="nav-item nav-link" id="registerLink">Registrarse</a>
-                            <a href="#" class="nav-item nav-link d-none" id="userWelcome"></a>
-                            <a href="#" class="nav-item nav-link d-none" id="adminPanel" onclick="showAdminModal()">
+                            
+                            <!-- Estados de usuario logueado (ocultos por defecto) -->
+                            <a href="#" class="nav-item nav-link d-none" id="userWelcome" title="Usuario actual"></a>
+                            <a href="#" class="nav-item nav-link d-none" id="adminPanel" onclick="showAdminModal()"
+                               title="Panel de administración">
                                 <i class="fas fa-user-shield mr-1"></i>Admin
                             </a>
-                            <a href="#" class="nav-item nav-link d-none" id="logoutLink" onclick="logoutUser()">
+                            <a href="#" class="nav-item nav-link d-none" id="logoutLink" onclick="logoutUser()"
+                               title="Cerrar sesión">
                                 <i class="fas fa-sign-out-alt mr-1"></i>Cerrar Sesión
                             </a>
                         </div>
                     </div>
                 </nav>
-                <!--carousel de inicio-->
+                
+                <!-- ============================================
+                     CARRUSEL PRINCIPAL - BANNER PROMOCIONAL
+                     ============================================
+                     Sistema de carousel responsive Bootstrap 4:
+                     - 2 slides principales con productos destacados
+                     - Indicadores visuales de navegación (removidos por diseño)
+                     - Controles de navegación automática
+                     - Textos promocionales con CTAs
+                     ============================================ -->
                 <div id="header-carousel" class="carousel slide" data-ride="carousel">
+                    
+                    <!-- CONTENEDOR DE SLIDES -->
                     <div class="carousel-inner">
+                        
+                        <!-- SLIDE 1: PROMOCIÓN COMPONENTES REACONDICIONADOS -->
                         <div class="carousel-item active" style="height: 410px;">
-                            <img class="img-fluid" src="img/carousel-1.jpg" alt="Image">
+                            <img class="img-fluid" src="img/carousel-1.jpg" alt="Promoción Componentes Reacondicionados">
+                            <!-- Overlay con gradiente para mejor legibilidad -->
                             <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
                                 <div class="p-3" style="max-width: 700px;">
+                                    <!-- Título principal promocional -->
                                     <h4 class="text-light text-uppercase font-weight-medium mb-3">10% de Descuento en tu Primera Orden</h4>
+                                    <!-- Título del producto destacado -->
                                     <h3 class="display-4 text-white font-weight-semi-bold mb-4">Componentes reacondicionados</h3>
+                                    <!-- Call-to-Action principal -->
                                     <a href="tienda.html" class="btn btn-light py-2 px-3">Comprar Ahora</a>
                                 </div>
                             </div>
                         </div>
+                        
+                        <!-- SLIDE 2: PROMOCIÓN PRECIOS RAZONABLES -->
                         <div class="carousel-item" style="height: 410px;">
-                            <img class="img-fluid" src="img/carousel-2.jpg" alt="Image">
+                            <img class="img-fluid" src="img/carousel-2.jpg" alt="Promoción Precios Razonables">
+                            <!-- Overlay con gradiente para mejor legibilidad -->
                             <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
                                 <div class="p-3" style="max-width: 700px;">
+                                    <!-- Título promocional secundario -->
                                     <h4 class="text-light text-uppercase font-weight-medium mb-3">10% de Descuento en tu Primera Orden</h4>
+                                    <!-- Título del producto destacado -->
                                     <h3 class="display-4 text-white font-weight-semi-bold mb-4">Precio Razonable</h3>
+                                    <!-- Call-to-Action secundario -->
                                     <a href="tienda.html" class="btn btn-light py-2 px-3">Comprar Ahora</a>
                                 </div>
                             </div>
                         </div>
                     </div>
+                    
+                    <!-- CONTROLES DE NAVEGACIÓN -->
+                    <!-- Botón anterior -->
                     <a class="carousel-control-prev" href="#header-carousel" data-slide="prev">
                         <div class="btn btn-dark" style="width: 45px; height: 45px;">
                             <span class="carousel-control-prev-icon mb-n2"></span>
                         </div>
                     </a>
+                    <!-- Botón siguiente -->
                     <a class="carousel-control-next" href="#header-carousel" data-slide="next">
                         <div class="btn btn-dark" style="width: 45px; height: 45px;">
                             <span class="carousel-control-next-icon mb-n2"></span>
@@ -135,185 +241,349 @@
             </div>
         </div>
     </div>
-    <!-- Categorías Inicio -->
+    <!-- ============================================
+         SECCIÓN DE CATEGORÍAS PRINCIPALES
+         ============================================
+         Grid responsive de categorías de productos:
+         - 4 categorías principales con imágenes
+         - Contador dinámico de productos por categoría
+         - Enlaces a páginas específicas de categoría
+         - Diseño adaptable (lg-3, md-6 breakpoints)
+         ============================================ -->
     <div class="container-fluid pt-5">
         <div class="row px-xl-5 pb-3">
+            
+            <!-- CATEGORÍA: PROCESADORES -->
             <div class="col-lg-3 col-md-6 pb-1">
                 <div class="cat-item d-flex flex-column border mb-4" style="padding: 30px;">
+                    <!-- Contador de productos en esta categoría -->
                     <p class="text-right">1 Producto</p>
-                    <a href="" class="cat-img position-relative overflow-hidden mb-3">
-                        <img class="img-fluid" src="img/cat-4.jpg" alt="">
+                    <!-- Imagen representativa de la categoría -->
+                    <a href="" class="cat-img position-relative overflow-hidden mb-3" 
+                       title="Ver todos los procesadores">
+                        <img class="img-fluid" src="img/cat-4.jpg" alt="Categoría Procesadores">
                     </a>
+                    <!-- Nombre de la categoría -->
                     <h5 class="font-weight-semi-bold m-0">Procesadores</h5>
                 </div>
             </div>
+            
+            <!-- CATEGORÍA: PLACAS MADRE -->
             <div class="col-lg-3 col-md-6 pb-1">
                 <div class="cat-item d-flex flex-column border mb-4" style="padding: 30px;">
+                    <!-- Contador de productos en esta categoría -->
                     <p class="text-right">1 Producto</p>
-                    <a href="" class="cat-img position-relative overflow-hidden mb-3">
-                        <img class="img-fluid" src="img/placamadre.jpg" alt="">
+                    <!-- Imagen representativa de la categoría -->
+                    <a href="" class="cat-img position-relative overflow-hidden mb-3"
+                       title="Ver todas las placas madre">
+                        <img class="img-fluid" src="img/placamadre.jpg" alt="Categoría Placas Madre">
                     </a>
+                    <!-- Nombre de la categoría -->
                     <h5 class="font-weight-semi-bold m-0">Placas Madre</h5>
                 </div>
             </div>
+            
+            <!-- CATEGORÍA: TARJETAS GRÁFICAS -->
             <div class="col-lg-3 col-md-6 pb-1">
                 <div class="cat-item d-flex flex-column border mb-4" style="padding: 30px;">
+                    <!-- Contador de productos en esta categoría -->
                     <p class="text-right">1 Producto</p>
-                    <a href="" class="cat-img position-relative overflow-hidden mb-3">
-                        <img class="img-fluid" src="img/cat-1.jpg" alt="">
+                    <!-- Imagen representativa de la categoría -->
+                    <a href="" class="cat-img position-relative overflow-hidden mb-3"
+                       title="Ver todas las tarjetas gráficas">
+                        <img class="img-fluid" src="img/cat-1.jpg" alt="Categoría Tarjetas Gráficas">
                     </a>
+                    <!-- Nombre de la categoría -->
                     <h5 class="font-weight-semi-bold m-0">Memorias RAM</h5>
                 </div>
             </div>
+            
+            <!-- CATEGORÍA: TARJETAS GRÁFICAS -->
             <div class="col-lg-3 col-md-6 pb-1">
                 <div class="cat-item d-flex flex-column border mb-4" style="padding: 30px;">
+                    <!-- Contador de productos en esta categoría -->
                     <p class="text-right">1 Producto</p>
-                    <a href="" class="cat-img position-relative overflow-hidden mb-3">
-                        <img class="img-fluid" src="img/tarjeta-grafica.jpg" alt="">
+                    <!-- Imagen representativa de la categoría -->
+                    <a href="" class="cat-img position-relative overflow-hidden mb-3"
+                       title="Ver todas las tarjetas gráficas">
+                        <img class="img-fluid" src="img/tarjeta-grafica.jpg" alt="Categoría Tarjetas Gráficas">
                     </a>
+                    <!-- Nombre de la categoría -->
                     <h5 class="font-weight-semi-bold m-0">Tarjetas Graficas</h5>
                 </div>
             </div>
         </div>
     </div>
-    <!-- Categorías Fin -->
-    <!-- Productos Inicio -->
+    
+    <!-- ============================================
+         SECCIÓN DE PRODUCTOS DESTACADOS
+         ============================================
+         Sistema dinámico de visualización de productos:
+         - Título centrado con estilo decorativo
+         - Grid responsive para productos
+         - Productos cargados dinámicamente por main.js
+         - Integración con sistema de carrito
+         ============================================ -->
     <div class="container-fluid pt-5">
+        <!-- TÍTULO DE LA SECCIÓN -->
         <div class="text-center mb-4">
-            <h2 class="section-title px-5"><span class="px-2">Todos los productos</span></h2>
+            <h2 class="section-title px-5">
+                <span class="px-2">Todos los productos</span>
+            </h2>
         </div>
+        
+        <!-- ============================================
+             GRID DE PRODUCTOS - CONTENIDO ESTÁTICO
+             ============================================
+             Productos hardcodeados para demostración:
+             - 8 productos con diferentes categorías
+             - Cada producto incluye: imagen, título, precio
+             - Botones de acción: Ver producto, Agregar al carrito
+             - Enlaces directos a detalle.html con parámetros
+             ============================================ -->
         <div class="row px-xl-5 pb-3">
+            
+            <!-- PRODUCTO 1: PROCESADOR INTEL i7 -->
             <div class="col-lg-3 col-md-6 col-sm-12 pb-1">
                 <div class="card product-item border-0 mb-4" data-category="Procesadores">
+                    <!-- Imagen del producto -->
                     <div class="card-header product-img position-relative overflow-hidden bg-transparent border p-0">
-                        <img class="img-fluid w-100" src="img/ryzen.jpg" alt="Procesador AMD Ryzen 7 3700X">
+                        <img class="img-fluid w-100" src="img/product-6.jpg" alt="Procesador Intel i7 9700K">
                     </div>
+                    <!-- Información del producto -->
                     <div class="card-body border-left border-right text-center p-0 pt-4 pb-3">
-                        <h6 class="product-title">Procesador AMD Ryzen 7 3700X</h6>
+                        <h6 class="product-title">Procesador Intel i7 9700K</h6>
                         <div class="d-flex justify-content-center">
-                            <h6>$169.990</h6><h6 class="text-muted ml-2"><del>$249.990</del></h6>
+                            <h6>CLP $189.990</h6>
                         </div>
                     </div>
+                    <!-- Acciones del producto -->
                     <div class="card-footer d-flex justify-content-between bg-light border">
-                        <span class="btn btn-sm text-dark p-0 disabled"><i class="fas fa-eye text-muted mr-1"></i>Sin Detalle</span>
-                        <a href="#" class="btn btn-sm text-dark p-0" onclick="agregarAlCarrito({
-                            name: 'Procesador AMD Ryzen 7 3700X',
-                            price: 169990,
-                            image: 'img/ryzen.jpg'
-                        })"><i class="fas fa-shopping-cart text-primary mr-1"></i>Agregar</a>
+                        <!-- Enlace a página de detalle con ID del producto -->
+                        <a href="producto.html?id=1" class="btn btn-sm text-dark p-0" title="Ver detalles del producto">
+                            <i class="fas fa-eye text-primary mr-1"></i>Ver Producto
+                        </a>
+                        <!-- Botón agregar al carrito con datos del producto -->
+                        <a href="#" class="btn btn-sm text-dark p-0" 
+                           onclick="agregarAlCarrito({
+                               id: 1,
+                               name: 'Procesador Intel i7 9700K',
+                               price: 189990,
+                               image: 'img/product-6.jpg'
+                           })" title="Agregar al carrito de compras">
+                            <i class="fas fa-shopping-cart text-primary mr-1"></i>Agregar
+                        </a>
                     </div>
                 </div>
             </div>
+            
+            <!-- PRODUCTO 2: PLACA MADRE GIGABYTE -->
             <div class="col-lg-3 col-md-6 col-sm-12 pb-1">
                 <div class="card product-item border-0 mb-4" data-category="Placas Madre">
+                    <!-- Imagen del producto -->
                     <div class="card-header product-img position-relative overflow-hidden bg-transparent border p-0">
-                        <img class="img-fluid w-100" src="img/product-6.jpg" alt="Placa Madre Z590 AORUS PRO AX">
+                        <img class="img-fluid w-100" src="img/placamadre.jpg" alt="Placa Madre Gigabyte Z590 AORUS PRO AX">
                     </div>
+                    <!-- Información del producto -->
                     <div class="card-body border-left border-right text-center p-0 pt-4 pb-3">
-                        <h6 class="product-title">Placa Madre Z590 AORUS PRO AX</h6>
+                        <h6 class="product-title">Z590 AORUS PRO AX</h6>
                         <div class="d-flex justify-content-center">
-                            <h6>$149.000</h6><h6 class="text-muted ml-2"><del>$268.990</del></h6>
+                            <h6>CLP $149.000</h6>
                         </div>
                     </div>
+                    <!-- Acciones del producto -->
                     <div class="card-footer d-flex justify-content-between bg-light border">
-                        <span class="btn btn-sm text-dark p-0 disabled"><i class="fas fa-eye text-muted mr-1"></i>Sin Detalle</span>
-                        <a href="#" class="btn btn-sm text-dark p-0" onclick="agregarAlCarrito({
-                            name: 'Placa Madre Z590 AORUS PRO AX',
-                            price: 149000,
-                            image: 'img/product-6.jpg'
-                        })"><i class="fas fa-shopping-cart text-primary mr-1"></i>Agregar</a>
+                        <a href="producto.html?id=2" class="btn btn-sm text-dark p-0" title="Ver detalles del producto">
+                            <i class="fas fa-eye text-primary mr-1"></i>Ver Producto
+                        </a>
+                        <a href="#" class="btn btn-sm text-dark p-0" 
+                           onclick="agregarAlCarrito({
+                               id: 2,
+                               name: 'Placa Madre Gigabyte Z590 AORUS PRO AX',
+                               price: 149000,
+                               image: 'img/placamadre.jpg'
+                           })" title="Agregar al carrito de compras">
+                            <i class="fas fa-shopping-cart text-primary mr-1"></i>Agregar
+                        </a>
                     </div>
                 </div>
             </div>
+            
+            <!-- PRODUCTO 3: MEMORIA RAM -->
             <div class="col-lg-3 col-md-6 col-sm-12 pb-1">
                 <div class="card product-item border-0 mb-4" data-category="Memorias RAM">
+                    <!-- Imagen del producto -->
                     <div class="card-header product-img position-relative overflow-hidden bg-transparent border p-0">
-                        <img class="img-fluid w-100" src="img/product-5.jpg" alt="Kit RAM DDR4 16GB 3200MHz RGB">
+                        <img class="img-fluid w-100" src="img/product-5.jpg" alt="Kit Memoria RAM DDR4 16GB RGB">
                     </div>
+                    <!-- Información del producto -->
                     <div class="card-body border-left border-right text-center p-0 pt-4 pb-3">
-                        <h6 class="product-title">Kit RAM DDR4 16GB 3200MHz RGB</h6>
+                        <h6 class="product-title">Kit RAM DDR4 16GB RGB</h6>
                         <div class="d-flex justify-content-center">
-                            <h6>$34.990</h6><h6 class="text-muted ml-2"><del>$59.990</del></h6>
+                            <h6>CLP $34.990</h6>
                         </div>
                     </div>
+                    <!-- Acciones del producto -->
                     <div class="card-footer d-flex justify-content-between bg-light border">
-                        <span class="btn btn-sm text-dark p-0 disabled"><i class="fas fa-eye text-muted mr-1"></i>Sin Detalle</span>
-                        <a href="#" class="btn btn-sm text-dark p-0" onclick="agregarAlCarrito({
-                            name: 'Kit RAM DDR4 16GB 3200MHz RGB',
-                            price: 34990,
-                            image: 'img/product-5.jpg'
-                        })"><i class="fas fa-shopping-cart text-primary mr-1"></i>Agregar</a>
+                        <a href="producto.html?id=3" class="btn btn-sm text-dark p-0" title="Ver detalles del producto">
+                            <i class="fas fa-eye text-primary mr-1"></i>Ver Producto
+                        </a>
+                        <a href="#" class="btn btn-sm text-dark p-0" 
+                           onclick="agregarAlCarrito({
+                               id: 3,
+                               name: 'Kit Memoria RAM DDR4 16GB (2x8GB) 3200MHz RGB',
+                               price: 34990,
+                               image: 'img/product-5.jpg'
+                           })" title="Agregar al carrito de compras">
+                            <i class="fas fa-shopping-cart text-primary mr-1"></i>Agregar
+                        </a>
                     </div>
                 </div>
             </div>
+            
+            <!-- PRODUCTO 4: TARJETA GRÁFICA RTX -->
             <div class="col-lg-3 col-md-6 col-sm-12 pb-1">
                 <div class="card product-item border-0 mb-4" data-category="Tarjetas Gráficas">
+                    <!-- Imagen del producto -->
                     <div class="card-header product-img position-relative overflow-hidden bg-transparent border p-0">
-                        <img class="img-fluid w-100" src="img/product-1.jpg" alt="RTX 2080 Super 8GB">
+                        <img class="img-fluid w-100" src="img/tarjeta-grafica.jpg" alt="Tarjeta Gráfica RTX 2080 Super 8GB">
                     </div>
+                    <!-- Información del producto -->
                     <div class="card-body border-left border-right text-center p-0 pt-4 pb-3">
                         <h6 class="product-title">RTX 2080 Super 8GB</h6>
                         <div class="d-flex justify-content-center">
-                            <h6>$298.990</h6><h6 class="text-muted ml-2"><del>$500.000</del></h6>
+                            <h6>CLP $298.990</h6>
                         </div>
                     </div>
+                    <!-- Acciones del producto -->
                     <div class="card-footer d-flex justify-content-between bg-light border">
-                        <span class="btn btn-sm text-dark p-0 disabled"><i class="fas fa-eye text-muted mr-1"></i>Sin Detalle</span>
-                        <a href="#" class="btn btn-sm text-dark p-0" onclick="agregarAlCarrito({
-                            name: 'RTX 2080 Super 8GB',
-                            price: 298990,
-                            image: 'img/product-1.jpg'
-                        })"><i class="fas fa-shopping-cart text-primary mr-1"></i>Agregar</a>
+                        <a href="producto.html?id=4" class="btn btn-sm text-dark p-0" title="Ver detalles del producto">
+                            <i class="fas fa-eye text-primary mr-1"></i>Ver Producto
+                        </a>
+                        <a href="#" class="btn btn-sm text-dark p-0" 
+                           onclick="agregarAlCarrito({
+                               id: 4,
+                               name: 'Tarjeta Gráfica RTX 2080 Super 8GB',
+                               price: 298990,
+                               image: 'img/tarjeta-grafica.jpg'
+                           })" title="Agregar al carrito de compras">
+                            <i class="fas fa-shopping-cart text-primary mr-1"></i>Agregar
+                        </a>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    <!-- Productos Fin -->
-   
-    <!-- Pie de Página Inicio -->
+    
+    <!-- ============================================
+         FOOTER - PIE DE PÁGINA
+         ============================================
+         Footer corporativo con información de contacto:
+         - Logo y descripción de la empresa
+         - Información de contacto completa
+         - Enlaces de navegación rápida
+         - Diseño responsive con breakpoints
+         ============================================ -->
     <div class="container-fluid bg-secondary text-dark mt-5 pt-5">
         <div class="row px-xl-5 pt-5">
+            
+            <!-- COLUMNA IZQUIERDA: INFORMACIÓN DE LA EMPRESA -->
             <div class="col-lg-4 col-md-12 mb-5 pr-3 pr-xl-5">
-                <a href="" class="text-decoration-none">
-                    <h1 class="mb-4 display-5 font-weight-semi-bold">Hardware Tech</h1>
+                <!-- Logo de la empresa -->
+                <a href="index.html" class="text-decoration-none" title="Ir al inicio">
+                    <h1 class="mb-4 display-5 font-weight-semi-bold">
+                        <span class="text-primary font-weight-bold border px-2 mr-1">HW</span>
+                        Hardware Tech
+                    </h1>
                 </a>
+                <!-- Descripción de la empresa -->
                 <p>Tu tienda de componentes reacondicionados y nuevos a precios razonables.</p>
-                <p class="mb-2"><i class="fa fa-map-marker-alt text-primary mr-3"></i>Calle Cualquiera 123, Santiago de Chile</p>
-                <p class="mb-2"><i class="fa fa-envelope text-primary mr-3"></i>info@hardwaretech.com</p>
-                <p class="mb-0"><i class="fa fa-phone-alt text-primary mr-3"></i>+56 912345678</p>
+                
+                <!-- INFORMACIÓN DE CONTACTO -->
+                <p class="mb-2">
+                    <i class="fa fa-map-marker-alt text-primary mr-3"></i>
+                    Calle Cualquiera 123, Santiago de Chile
+                </p>
+                <p class="mb-2">
+                    <i class="fa fa-envelope text-primary mr-3"></i>
+                    <a href="mailto:info@hardwaretech.com" class="text-dark">info@hardwaretech.com</a>
+                </p>
+                <p class="mb-0">
+                    <i class="fa fa-phone-alt text-primary mr-3"></i>
+                    <a href="tel:+56912345678" class="text-dark">+56 912345678</a>
+                </p>
             </div>
+            
+            <!-- COLUMNA DERECHA: ENLACES DE NAVEGACIÓN -->
             <div class="col-lg-8 col-md-12">
                 <div class="row">
                     <div class="col-md-4 mb-5">
                         <h5 class="font-weight-bold text-dark mb-4">Enlaces Rápidos</h5>
                         <div class="d-flex flex-column justify-content-start">
-                            <a class="text-dark mb-2" href="index.html"><i class="fa fa-angle-right mr-2"></i>Inicio</a>
-                            <a class="text-dark mb-2" href="tienda.html"><i class="fa fa-angle-right mr-2"></i>Nuestra Tienda</a>
-                            <a class="text-dark mb-2" href="carrito.html"><i class="fa fa-angle-right mr-2"></i>Carrito de Compras</a>
-
+                            <a class="text-dark mb-2" href="index.html" title="Página principal">
+                                <i class="fa fa-angle-right mr-2"></i>Inicio
+                            </a>
+                            <a class="text-dark mb-2" href="tienda.html" title="Ver todos los productos">
+                                <i class="fa fa-angle-right mr-2"></i>Nuestra Tienda
+                            </a>
+                            <a class="text-dark mb-2" href="carrito.html" title="Ver carrito de compras">
+                                <i class="fa fa-angle-right mr-2"></i>Carrito de Compras
+                            </a>
                         </div>
+                    </div>
+                    
+                    <!-- Espacio para columnas adicionales si se requieren en el futuro -->
+                    <div class="col-md-4 mb-5">
+                        <!-- Columna reservada para categorías o información adicional -->
+                    </div>
+                    <div class="col-md-4 mb-5">
+                        <!-- Columna reservada para redes sociales o políticas -->
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    <!-- Pie de Página Fin -->
 
+    <!-- ============================================
+         BOTÓN VOLVER ARRIBA
+         ============================================
+         Botón fijo de accesibilidad para scroll superior:
+         - Posición fija en esquina inferior derecha
+         - Funcionalidad de scroll suave al top
+         - Estilo consistente con el tema
+         ============================================ -->
+    <a href="#" class="btn btn-primary back-to-top" title="Volver al inicio de la página">
+        <i class="fa fa-angle-double-up"></i>
+    </a>
 
-    <!-- Volver Arriba -->
-    <a href="#" class="btn btn-primary back-to-top"><i class="fa fa-angle-double-up"></i></a>
-
-
-    <!-- Librerías JavaScript -->
+    <!-- ============================================
+         SCRIPTS JAVASCRIPT - LIBRERÍAS EXTERNAS
+         ============================================
+         Dependencias externas cargadas desde CDN:
+         - jQuery 3.4.1: Biblioteca base para manipulación DOM
+         - Bootstrap 4.4.1: Framework CSS con componentes JS
+         ============================================ -->
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
-    <!-- Eliminados scripts de easing y owl.carousel no usados -->
+    <!-- Nota: Scripts de easing y owl.carousel removidos por no uso -->
 
-    <!-- Plantilla Javascript -->
+    <!-- ============================================
+         SCRIPTS JAVASCRIPT - MÓDULOS DEL SISTEMA
+         ============================================
+         Módulos JavaScript del sistema en orden de dependencias:
+         - main.js: Funcionalidad principal y navegación
+         - admin.js: Panel administrativo y estadísticas
+         - aunt.js: Gestión de autenticación de usuarios
+         - carrito.js: Gestión del carrito de compras
+         - productos.js: Gestión general de productos
+         - productos-admin.js: CRUD administrativo de productos
+         ============================================ -->
     <script src="js/main.js"></script>
     <script src="js/admin.js"></script>
     <script src="js/aunt.js"></script>
     <script src="js/carrito.js"></script>
+    <script src="js/productos.js"></script>
+    <script src="js/productos-admin.js"></script>
+
 </body>
 </html>

@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <!-- Metadatos básicos del documento -->
+    <meta charset="utf-8">
+        <title>Hardware Tech - Producto</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="Tienda de hardware y componentes de computadora" name="keywords">
+    <meta content="Detalle de producto - Hardware Tech" name="description">
+
+    <!-- Favicon de la tienda -->
+    <link href="img/favicon.ico" rel="icon">
+
+    <!-- Fuentes de Google para el diseño -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet"> 
+
+    <!-- Iconos de Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+
+    <!-- Hoja de estilos personalizada del proyecto -->
+    <link href="scss/style.css" rel="stylesheet">
+</head>
+
+<body>
+    <!-- ========================================
+         BARRA SUPERIOR DE NAVEGACIÓN
+         Contiene logo, buscador y carrito
+    ======================================== -->
+    <div class="container-fluid">
+        <div class="row align-items-center py-3 px-xl-5">
+            <!-- Logo de la tienda -->
+            <div class="col-lg-4 d-none d-lg-block">
+                <a href="index.html" class="text-decoration-none">
+                    <h1 class="m-0 display-5 font-weight-semi-bold">Hardware Tech</h1>
+                </a>
+            </div>
+            <!-- Buscador de productos -->
+            <div class="col-lg-5 col-9 text-left">
+                <form action="">
+                    <div class="input-group">
+                        <input type="text" class="form-control" placeholder="Buscar productos">
+                        <div class="input-group-append">
+                            <span class="input-group-text bg-transparent text-primary">
+                                <i class="fa fa-search"></i>
+                            </span>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <!-- Icono del carrito con contador -->
+            <div class="col-lg-3 col-3 text-right">
+                <a href="carrito.html" class="btn border">
+                    <i class="fas fa-shopping-cart text-primary"></i>
+                    <span class="badge">0</span>
+                </a>
+            </div>
+        </div>
+    </div>
+    <!-- Fin de la barra superior -->
+    <!-- ========================================
+         BARRA DE NAVEGACIÓN PRINCIPAL
+         Incluye categorías y menú de páginas
+    ======================================== -->
+    <div class="container-fluid">
+        <div class="row border-top px-xl-5">
+            <!-- Menú de categorías (solo desktop) -->
+            <div class="col-lg-2 d-none d-lg-block">
+                <a class="btn shadow-none d-flex align-items-center justify-content-between bg-primary text-white w-100" data-toggle="collapse" href="#navbar-vertical" style="height: 65px; margin-top: -1px; padding: 0 30px;">
+                    <h6 class="m-0">Categorías</h6>
+                    <i class="fa fa-angle-down text-dark"></i>
+                </a>
+                <!-- Contenedor dinámico de categorías -->
+                <nav class="collapse show" id="navbar-vertical"></nav>
+            </div>
+            <!-- Menú principal de navegación -->
+            <div class="col-lg-10">
+                <!-- Botón de categorías para móviles -->
+                <div class="d-lg-none mb-3">
+                    <button class="btn btn-primary btn-block btn-categories-mobile" type="button" data-toggle="collapse" data-target="#mobile-categories" aria-expanded="false" aria-controls="mobile-categories">
+                        <i class="fa fa-bars mr-2"></i>Categorías
+                    </button>
+                    <div class="collapse" id="mobile-categories"></div>
+                </div>
+                <!-- Navegación principal -->
+                <nav class="navbar navbar-expand-lg bg-light navbar-light py-3 py-lg-0 px-0">
+                    <a href="" class="text-decoration-none d-block d-lg-none">
+                        <h1 class="m-0 display-5 font-weight-semi-bold">Hardware Tech</h1>
+                    </a>
+                    <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
+                        <div class="navbar-nav mr-auto py-0">
+                            <a href="index.html" class="nav-item nav-link">Inicio</a>
+                            <a href="tienda.html" class="nav-item nav-link active">Tienda</a>
+                            <div class="nav-item dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Páginas</a>
+                                <div class="dropdown-menu rounded-0 m-0">
+                                    <a href="carrito.html" class="dropdown-item">Carrito de Compras</a>
+                                    <a href="pago.html" class="dropdown-item">Pagar</a>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Menú de usuario (login/logout) -->
+                        <div class="navbar-nav ml-auto py-0">
+                            <a href="iniciar-sesion.html" class="nav-item nav-link" id="loginLink">Iniciar Sesión</a>
+                            <a href="registro.html" class="nav-item nav-link" id="registerLink">Registrarse</a>
+                            <a href="#" class="nav-item nav-link d-none" id="userWelcome"></a>
+                            <a href="#" class="nav-item nav-link d-none" id="adminPanel" onclick="showAdminModal()">
+                                <i class="fas fa-user-shield mr-1"></i>Admin
+                            </a>
+                            <a href="#" class="nav-item nav-link d-none" id="logoutLink" onclick="logoutUser()">
+                                <i class="fas fa-sign-out-alt mr-1"></i>Cerrar Sesión
+                            </a>
+                        </div>
+                    </div>
+                </nav>
+            </div>
+        </div>
+    </div>
+    <!-- Fin de la barra de navegación -->
+
+    <!-- ========================================
+         SECCIÓN PRINCIPAL DEL PRODUCTO
+         Aquí se muestran los detalles del producto seleccionado
+    ======================================== -->
+    <div class="container-fluid pt-5">
+        <div class="row px-xl-5">
+            <!-- Imagen principal del producto -->
+            <div class="col-lg-5 pb-5">
+                <!-- Contenedor de imagen con placeholder mientras carga -->
+                <div id="product-image-container" class="position-relative">
+                    <img class="w-100 h-auto" id="product-image" src="img/product-1.jpg" alt="Imagen del producto" style="border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
+                </div>
+            </div>
+            
+            <!-- Información detallada del producto -->
+            <div class="col-lg-7 pb-5">
+                <!-- Nombre del producto -->
+                <h3 class="font-weight-semi-bold" id="product-name">Cargando producto...</h3>
+                
+                <!-- Precios del producto -->
+                <div class="d-flex mb-4" id="product-price">
+                    <h3 class="font-weight-semi-bold mb-4">$0</h3>
+                </div>
+                
+                <!-- Descripción corta del producto -->
+                <p class="mb-4" id="product-description">
+                    Cargando descripción del producto...
+                </p>
+                
+                <!-- Estado del stock -->
+                <div class="d-flex mb-3">
+                    <p class="text-dark font-weight-medium mb-0 mr-3">Disponibilidad:</p>
+                    <div id="product-stock">
+                        <span class="badge badge-success">En Stock</span>
+                    </div>
+                </div>
+                
+                <!-- Categoría del producto -->
+                <div class="d-flex mb-4">
+                    <p class="text-dark font-weight-medium mb-0 mr-3">Categoría:</p>
+                    <span id="product-category" class="badge badge-secondary">Hardware</span>
+                </div>
+                
+                <!-- Selector de cantidad y botón de compra -->
+                <div class="d-flex align-items-center mb-4 pt-2">
+                    <!-- Control de cantidad -->
+                    <div class="input-group quantity mr-3" style="width: 130px;">
+                        <div class="input-group-btn">
+                            <button class="btn btn-primary btn-minus" type="button" onclick="changeQuantity(-1)">
+                                <i class="fa fa-minus"></i>
+                            </button>
+                        </div>
+                        <input type="text" class="form-control bg-secondary text-center" id="quantity-input" value="1" min="1" readonly>
+                        <div class="input-group-btn">
+                            <button class="btn btn-primary btn-plus" type="button" onclick="changeQuantity(1)">
+                                <i class="fa fa-plus"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <!-- Botón principal de agregar al carrito -->
+                    <button class="btn btn-primary px-3" id="add-to-cart-btn">
+                        <i class="fa fa-shopping-cart mr-1"></i> Agregar al Carrito
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Fin de la sección principal del producto -->
+
+    <!-- ========================================
+         PIE DE PÁGINA
+         Información de contacto y enlaces importantes
+    ======================================== -->
+    <div class="container-fluid bg-secondary text-dark mt-5 pt-5">
+        <div class="row px-xl-5 pt-5">
+            <!-- Información de la empresa -->
+            <div class="col-lg-4 col-md-12 mb-5 pr-3 pr-xl-5">
+                <a href="index.html" class="text-decoration-none">
+                    <h1 class="mb-4 display-5 font-weight-semi-bold">Hardware Tech</h1>
+                </a>
+                <p>Tu tienda de componentes reacondicionados y nuevos a precios razonables.</p>
+                <p class="mb-2"><i class="fa fa-map-marker-alt text-primary mr-3"></i>Calle Cualquiera 123, Santiago de Chile</p>
+                <p class="mb-2"><i class="fa fa-envelope text-primary mr-3"></i>info@hardwaretech.com</p>
+                <p class="mb-0"><i class="fa fa-phone-alt text-primary mr-3"></i>+56 912345678</p>
+            </div>
+            <!-- Enlaces rápidos y navegación -->
+            <div class="col-lg-8 col-md-12">
+                <div class="row">
+                    <div class="col-md-4 mb-5">
+                        <h5 class="font-weight-bold text-dark mb-4">Enlaces Rápidos</h5>
+                        <div class="d-flex flex-column justify-content-start">
+                            <a class="text-dark mb-2" href="index.html"><i class="fa fa-angle-right mr-2"></i>Inicio</a>
+                            <a class="text-dark mb-2" href="tienda.html"><i class="fa fa-angle-right mr-2"></i>Nuestra Tienda</a>
+                            <a class="text-dark mb-2" href="carrito.html"><i class="fa fa-angle-right mr-2"></i>Carrito de Compras</a>
+                            <a class="text-dark" href="pago.html"><i class="fa fa-angle-right mr-2"></i>Pagar</a>
+                        </div>
+                    </div>
+                    <div class="col-md-4 mb-5">
+                        <h5 class="font-weight-bold text-dark mb-4">Categorías</h5>
+                        <div class="d-flex flex-column justify-content-start">
+                            <a class="text-dark mb-2" href="tienda.html#procesadores"><i class="fa fa-angle-right mr-2"></i>Procesadores</a>
+                            <a class="text-dark mb-2" href="tienda.html#placas-madre"><i class="fa fa-angle-right mr-2"></i>Placas Madre</a>
+                            <a class="text-dark mb-2" href="tienda.html#memorias-ram"><i class="fa fa-angle-right mr-2"></i>Memorias RAM</a>
+                            <a class="text-dark" href="tienda.html#tarjetas-graficas"><i class="fa fa-angle-right mr-2"></i>Tarjetas Gráficas</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Copyright -->
+        <div class="row border-top border-light mx-xl-5 py-4">
+            <div class="col-md-6 px-xl-0">
+                <p class="mb-md-0 text-center text-md-left text-dark">
+                    &copy; <a class="text-dark font-weight-semi-bold" href="#">Hardware Tech</a>. Todos los derechos reservados.
+                </p>
+            </div>
+            <div class="col-md-6 px-xl-0 text-center text-md-right">
+                <span class="text-dark">Métodos de pago aceptados</span>
+            </div>
+        </div>
+    </div>
+    <!-- Fin del pie de página -->
+
+    <!-- ========================================
+         BOTÓN VOLVER ARRIBA
+         Permite al usuario volver al inicio de la página
+    ======================================== -->
+    <a href="#" class="btn btn-primary back-to-top"><i class="fa fa-angle-double-up"></i></a>
+
+    <!-- ========================================
+         SCRIPTS DE JAVASCRIPT
+         Librerías y funcionalidad del sitio
+    ======================================== -->
+    <!-- jQuery - Librería principal -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <!-- Bootstrap JS - Componentes interactivos -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- Scripts personalizados del proyecto -->
+    <script src="js/main.js"></script>         <!-- Funcionalidad general -->
+    <script src="js/admin.js"></script>        <!-- Panel de administración -->
+    <script src="js/aunt.js"></script>         <!-- Autenticación de usuarios -->
+    <script src="js/carrito.js"></script>      <!-- Gestión del carrito -->
+    <script src="js/productos.js"></script>    <!-- Gestión de productos (nuevo) -->
+
+</body>
+</html>

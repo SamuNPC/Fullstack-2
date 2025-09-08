@@ -60,7 +60,7 @@
         <div class="row border-top px-xl-5">
             <div class="col-lg-2 d-none d-lg-block">
                 <a class="btn shadow-none d-flex align-items-center justify-content-between bg-primary text-white w-100" data-toggle="collapse" href="#navbar-vertical" style="height: 65px; margin-top: -1px; padding: 0 30px;">
-                    <h6 class="m-0">Categorías</h6>
+                    <small class="m-0">Categorías</small>
                     <i class="fa fa-angle-down text-dark"></i>
                 </a>
                 <nav class="collapse show" id="navbar-vertical"></nav>
@@ -81,13 +81,19 @@
                                 <a href="#" class="nav-link dropdown-toggle active" data-toggle="dropdown">Páginas</a>
                                 <div class="dropdown-menu rounded-0 m-0">
                                     <a href="carrito.html" class="dropdown-item">Carrito de Compras</a>
-                                    <a href="pago.html" class="dropdown-item">Finalizar Compra</a>
                                 </div>
                             </div>
                         </div>
                         <div class="navbar-nav ml-auto py-0">
-                            <a href="" class="nav-item nav-link">Login</a>
-                            <a href="" class="nav-item nav-link">Register</a>
+                            <a href="iniciar-sesion.html" class="nav-item nav-link" id="loginLink">Iniciar Sesión</a>
+                            <a href="registro.html" class="nav-item nav-link" id="registerLink">Registrarse</a>
+                            <a href="#" class="nav-item nav-link d-none" id="userWelcome"></a>
+                            <a href="#" class="nav-item nav-link d-none" id="adminPanel" onclick="showAdminModal()">
+                                <i class="fas fa-user-shield mr-1"></i>Admin
+                            </a>
+                            <a href="#" class="nav-item nav-link d-none" id="logoutLink" onclick="logoutUser()">
+                                <i class="fas fa-sign-out-alt mr-1"></i>Cerrar Sesión
+                            </a>
                         </div>
                     </div>
                 </nav>
@@ -111,11 +117,23 @@
     <!-- Page Header End -->
 
 
-    <!-- Cart Start -->
+    <!-- ============================================
+         SECCIÓN PRINCIPAL DEL CARRITO DE COMPRAS
+         ============================================
+         Sistema completo de gestión de carrito:
+         - Tabla responsiva de productos
+         - Control de cantidades dinámico
+         - Cálculo automático de totales
+         - Resumen de compra en tiempo real
+         - Botón de checkout integrado
+         ============================================ -->
     <div class="container-fluid pt-5">
         <div class="row px-xl-5">
+            
+            <!-- TABLA DE PRODUCTOS EN EL CARRITO -->
             <div class="col-lg-8 table-responsive mb-5">
-                <table class="table table-bordered text-center mb-0">
+                <table class="table table-bordered text-center mb-0" id="carrito-tabla">
+                    <!-- Encabezados de la tabla -->
                     <thead class="bg-secondary text-dark">
                         <tr>
                             <th>Productos</th>
@@ -125,28 +143,25 @@
                             <th>Eliminar</th>
                         </tr>
                     </thead>
-                    <tbody class="align-middle">
+                    <!-- Cuerpo dinámico - poblado por carrito.js -->
+                    <tbody class="align-middle" id="carrito-contenido">
                         <!-- Los productos del carrito se cargarán dinámicamente aquí -->
                     </tbody>
                 </table>
             </div>
+            
+            <!-- PANEL DE RESUMEN Y CHECKOUT -->
             <div class="col-lg-4">
-                <form class="mb-5" action="">
-                    <div class="input-group">
-                        <input type="text" class="form-control p-4" placeholder="Código de Cupón">
-                        <div class="input-group-append">
-                            <button class="btn btn-primary">Aplicar Cupón</button>
-                        </div>
-                    </div>
-                </form>
                 <div class="card border-secondary mb-5">
+                    <!-- Título del resumen -->
                     <div class="card-header bg-secondary border-0">
                         <h4 class="font-weight-semi-bold m-0">Resumen del Carrito</h4>
                     </div>
+                    <!-- Cálculos de precios -->
                     <div class="card-body">
                         <div class="d-flex justify-content-between mb-3 pt-1">
                             <h6 class="font-weight-medium">Subtotal</h6>
-                            <h6 class="font-weight-medium subtotal">$0</h6>
+                            <h6 class="font-weight-medium subtotal" id="subtotal-display">$0</h6>
                         </div>
                         <div class="d-flex justify-content-between">
                             <h6 class="font-weight-medium">Envío</h6>
@@ -187,8 +202,6 @@
                             <a class="text-dark mb-2" href="index.html"><i class="fa fa-angle-right mr-2"></i>Inicio</a>
                             <a class="text-dark mb-2" href="tienda.html"><i class="fa fa-angle-right mr-2"></i>Nuestra Tienda</a>
                             <a class="text-dark mb-2" href="carrito.html"><i class="fa fa-angle-right mr-2"></i>Carrito de Compras</a>
-                            <a class="text-dark mb-2" href="pago.html"><i class="fa fa-angle-right mr-2"></i>Finalizar Compra</a>
-                            <a class="text-dark" href="contact.html"><i class="fa fa-angle-right mr-2"></i>Contáctanos</a>
                         </div>
                     </div>
                 </div>
@@ -213,7 +226,11 @@
 
     <!-- Template Javascript -->
     <script src="js/main.js"></script>
+    <script src="js/admin.js"></script>
+    <script src="js/aunt.js"></script>
     <script src="js/carrito.js"></script>
+    <script src="js/productos.js"></script>
+    <script src="js/productos-admin.js"></script>
 </body>
 
 </html>
